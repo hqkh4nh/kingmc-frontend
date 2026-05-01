@@ -5,10 +5,11 @@ import Hero from '@/features/home/Hero'
 import JoinGuide from '@/features/home/JoinGuide'
 import Navbar from '@/features/home/Navbar'
 
-export const unstable_instant = { prefetch: 'static', unstable_disableBuildValidation: true }
+export const unstable_instant = { prefetch: 'static' }
 
 export const metadata: Metadata = {
   title: 'Máy chủ Minecraft #1 Việt Nam',
+  alternates: { canonical: '/' },
 }
 
 const homeJsonLd = {
