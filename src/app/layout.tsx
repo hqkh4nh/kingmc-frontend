@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import { Bricolage_Grotesque, JetBrains_Mono, Plus_Jakarta_Sans } from 'next/font/google'
 import GrainOverlay from '@/components/server/GrainOverlay'
 import ScrollProgress from '@/components/client/ScrollProgress'
+import WebVitals from '@/components/client/WebVitals'
 import Providers from './providers'
 import { env } from '@/lib/env'
 import './globals.css'
@@ -55,6 +56,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="vi" className={`${bricolage.variable} ${jakarta.variable} ${jetbrains.variable}`}>
       <body className="bg-ink text-on-surface min-h-screen font-sans antialiased">
+        <WebVitals />
         <GrainOverlay />
         <ScrollProgress />
         <Providers>{children}</Providers>
