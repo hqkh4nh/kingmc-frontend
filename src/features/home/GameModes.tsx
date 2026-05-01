@@ -4,8 +4,10 @@ import GameModeCard from './GameModeCard'
 
 export default function GameModes() {
   const modes = siteConfig.gameModes as GameMode[]
-  const featured = modes[0]!
+  const featured = modes[0]
   const rest = modes.slice(1)
+
+  if (!featured) return null
 
   return (
     <section id="game-modes" className="px-margin py-stack-2xl relative">
