@@ -1,5 +1,3 @@
-import type { StaticImageData } from 'next/image'
-
 import type { ChipColor, IconName } from '@/config/site'
 
 export type ModeId = 'kingsmp' | 'mega-earth' | 'battle-royale'
@@ -10,7 +8,7 @@ export interface ModeContent {
   tagline: string
   hero: {
     badge?: { label: string; color: ChipColor }
-    backgroundImage: string | StaticImageData
+    backgroundImage: string
     longDescription: string
     icon: IconName
   }

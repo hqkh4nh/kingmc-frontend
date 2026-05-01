@@ -1,4 +1,3 @@
-import heroBg from '@/assets/hero-background.png'
 import type { ModeContent } from './types'
 
 export const kingsmp: ModeContent = {
@@ -7,7 +6,7 @@ export const kingsmp: ModeContent = {
   tagline: 'Sinh tồn cộng đồng, kinh tế mở. Build căn cứ, làm giàu trên KingSMP — Mùa 4.',
   hero: {
     badge: { label: 'HOT', color: 'gold' },
-    backgroundImage: heroBg,
+    backgroundImage: '/images/hero-background.png',
     icon: 'castle',
     longDescription:
       'Server SMP cộng đồng với hệ thống kinh tế mở, bảo vệ đất đai và giao thương tự do giữa người chơi. Xây căn cứ, đánh nhau, trở thành người giàu nhất.',

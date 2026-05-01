@@ -1,4 +1,3 @@
-import heroBg from '@/assets/hero-background.png'
 import type { ModeContent } from './types'
 
 export const megaEarth: ModeContent = {
@@ -6,7 +5,7 @@ export const megaEarth: ModeContent = {
   name: 'Mega Earth',
   tagline: 'Sinh tồn trên bản đồ Trái Đất 500k blocks. Claim đất, lập bang hội, thu phục đệ tử.',
   hero: {
-    backgroundImage: heroBg,
+    backgroundImage: '/images/hero-background.png',
     icon: 'globe',
     longDescription:
       'Bản đồ Trái Đất tỉ lệ 1:1000 siêu thực với hơn 500k blocks. Xây dựng quốc gia, liên minh và thống trị. Có hệ thống claim đất, bang hội, đệ tử và nhiều tính năng custom.',

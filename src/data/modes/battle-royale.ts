@@ -1,4 +1,3 @@
-import heroBg from '@/assets/hero-background.png'
 import type { ModeContent } from './types'
 
 export const battleRoyale: ModeContent = {
@@ -7,7 +6,7 @@ export const battleRoyale: ModeContent = {
   tagline: 'PUBG/Free Fire phiên bản Minecraft. Solo Royale & Civ Royale.',
   hero: {
     badge: { label: 'MỚI', color: 'lime' },
-    backgroundImage: heroBg,
+    backgroundImage: '/images/hero-background.png',
     icon: 'sword',
     longDescription:
       'Spawn vào thế giới custom-generated rộng lớn, chiến đấu đến chết. Khám phá công thức chế tạo độc đáo và huyền thoại. Máu không tự hồi — chỉ phục hồi bằng golden apple và đầu enemy. Hỗ trợ Simple Voice Chat mod (proximity chat).',
