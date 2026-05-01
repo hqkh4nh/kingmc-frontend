@@ -1,7 +1,7 @@
 'use client'
 
 import { useCallback } from 'react'
-import { useCopyToClipboard } from './useCopyToClipboard'
+import { useCopyToClipboard } from '@/hooks/useCopyToClipboard'
 
 interface UseCopyIpOptions {
   ip?: string
