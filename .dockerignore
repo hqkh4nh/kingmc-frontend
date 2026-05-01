@@ -1,0 +1,12 @@
+.next
+.git
+node_modules
+kingmc-frontend-react
+docs
+.env*
+!.env.example
+*.md
+!README.md
+.github
+.vscode
+.idea
