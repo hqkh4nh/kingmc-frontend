@@ -1,20 +1,18 @@
 import { cacheLife } from 'next/cache'
-import { fetchKingmcStats } from '@/lib/api/kingmc'
+import { fetchKingmcStats, type KingmcStats } from '@/lib/api/kingmc'
 import PlayerCountClient from './PlayerCountClient'
 
-async function getStats() {
+async function getStats(): Promise<KingmcStats | null> {
   'use cache'
   cacheLife({ revalidate: 30, expire: 300 })
-  return fetchKingmcStats()
+  try {
+    return await fetchKingmcStats()
+  } catch {
+    return null
+  }
 }
 
 export default async function PlayerCountServer() {
-  let initial: number | null = null
-  try {
-    const stats = await getStats()
-    initial = stats.minecraft_player_count
-  } catch {
-    initial = null
-  }
-  return <PlayerCountClient initial={initial} />
+  const stats = await getStats()
+  return <PlayerCountClient initial={stats?.minecraft_player_count ?? null} />
 }

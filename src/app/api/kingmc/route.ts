@@ -1,7 +1,8 @@
-import { NextResponse } from 'next/server'
+import { connection, NextResponse } from 'next/server'
 import { fetchKingmcStats } from '@/lib/api/kingmc'
 
 export async function GET() {
+  await connection()
   try {
     const stats = await fetchKingmcStats()
     return NextResponse.json(stats, {
