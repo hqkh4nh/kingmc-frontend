@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import Chip from '@/components/server/Chip'
 import Icon from '@/components/server/Icon'
@@ -8,14 +9,7 @@ interface Props {
   featured?: boolean
 }
 
-const gradients: Record<string, string> = {
-  kingsmp: 'from-moss-deep/40 via-surface-2 to-surface-3',
-  'mega-earth': 'from-lapis-deep/40 via-surface-2 to-surface-3',
-  'battle-royale': 'from-rust-deep/45 via-surface-2 to-surface-3',
-}
-
 export default function GameModeCard({ mode, featured = false }: Props) {
-  const gradient = gradients[mode.id] ?? 'from-surface-2 to-surface-3'
   return (
     <Link
       href={mode.href}
@@ -25,13 +19,22 @@ export default function GameModeCard({ mode, featured = false }: Props) {
       } shadow-[0_0_0_1px_rgba(245,239,226,0.06)_inset,0_4px_16px_-4px_rgba(0,0,0,0.4)] hover:shadow-[0_0_0_1px_rgba(220,184,116,0.25)_inset,0_24px_56px_-12px_rgba(0,0,0,0.55),0_0_48px_-12px_rgba(200,163,86,0.18)]`}
     >
       <div
-        className={`relative flex items-center justify-center overflow-hidden bg-gradient-to-br ${gradient} ${
+        className={`relative overflow-hidden ${
           featured ? 'aspect-[5/4]' : 'aspect-[16/10]'
         }`}
       >
-        <div className="text-paper/8 group-hover:text-paper/15 absolute inset-0 flex items-center justify-center transition-all duration-700 ease-out group-hover:scale-110">
-          <Icon name={mode.icon} size={featured ? 220 : 140} />
-        </div>
+        <Image
+          src={mode.thumbnail}
+          alt={mode.title}
+          fill
+          sizes={
+            featured
+              ? '(min-width: 1024px) 58vw, 100vw'
+              : '(min-width: 1024px) 42vw, 100vw'
+          }
+          priority={featured}
+          className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+        />
         <div
           aria-hidden="true"
           className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_45%,rgba(0,0,0,0.45)_100%)]"

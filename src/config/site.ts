@@ -29,7 +29,7 @@ export interface GameMode {
   id: 'kingsmp' | 'mega-earth' | 'battle-royale'
   title: string
   description: string
-  icon: IconName
+  thumbnail: string
   gradient: string
   href: string
   tag?: { label: string; color: ChipColor }
@@ -80,7 +80,7 @@ export const siteConfig = {
       description:
         'Sinh tồn cộng đồng, kinh tế mở. Build căn cứ, đánh nhau, làm giàu. Chơi được cả PC lẫn điện thoại.',
       gradient: 'from-secondary-container/40 to-surface-container',
-      icon: 'castle',
+      thumbnail: '/images/modes/kingsmp.webp',
       href: '/mode/kingsmp',
       tag: { label: 'HOT', color: 'gold' },
     },
@@ -90,7 +90,7 @@ export const siteConfig = {
       description:
         'Bản đồ Trái Đất 500k blocks. Claim đất, lập bang hội, thu phục đệ tử. PC và điện thoại.',
       gradient: 'from-tertiary-container/40 to-surface-container',
-      icon: 'globe',
+      thumbnail: '/images/modes/mega-earth.webp',
       href: '/mode/mega-earth',
     },
     {
@@ -100,7 +100,7 @@ export const siteConfig = {
         'PUBG/Free Fire phiên bản Minecraft. Solo Royale & Civ Royale. Chỉ chơi trên PC, version 1.21.8 - 1.21.11.',
       tag: { label: 'MỚI', color: 'lime' },
       gradient: 'from-error-container/40 to-surface-container',
-      icon: 'sword',
+      thumbnail: '/images/modes/battle-royale.webp',
       href: 'https://battleroyale.kingmc.vn',
     },
   ] satisfies GameMode[],
