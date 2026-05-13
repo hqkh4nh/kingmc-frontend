@@ -6,8 +6,17 @@ import Icon from '@/components/server/Icon'
 import Tabs from '@/components/client/Tabs'
 import { siteConfig } from '@/config/site'
 
-const PREFERS_REDUCED_MOTION =
-  typeof window !== 'undefined' && window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+function usePrefersReducedMotion() {
+  const [reduced, setReduced] = useState(false)
+  useEffect(() => {
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)')
+    setReduced(mq.matches)
+    const handler = (e: MediaQueryListEvent) => setReduced(e.matches)
+    mq.addEventListener('change', handler)
+    return () => mq.removeEventListener('change', handler)
+  }, [])
+  return reduced
+}
 
 interface InfoRowProps {
   label: string
@@ -54,11 +63,12 @@ interface VideoPanelProps {
 function VideoPanel({ active, src, fallbackIp }: VideoPanelProps) {
   const ref = useRef<HTMLVideoElement>(null)
   const [errored, setErrored] = useState(false)
+  const reducedMotion = usePrefersReducedMotion()
 
   useEffect(() => {
     const v = ref.current
     if (!v || errored) return
-    if (active && !PREFERS_REDUCED_MOTION) {
+    if (active && !reducedMotion) {
       v.play().catch(() => {
         // autoplay blocked — leave the video paused; user can press play
       })
@@ -66,7 +76,7 @@ function VideoPanel({ active, src, fallbackIp }: VideoPanelProps) {
       v.pause()
       v.currentTime = 0
     }
-  }, [active, errored])
+  }, [active, errored, reducedMotion])
 
   if (errored) {
     return (
@@ -83,12 +93,12 @@ function VideoPanel({ active, src, fallbackIp }: VideoPanelProps) {
       <video
         ref={ref}
         src={src}
-        autoPlay={!PREFERS_REDUCED_MOTION}
+        autoPlay={!reducedMotion}
         muted
         loop
         playsInline
         preload="metadata"
-        controls={PREFERS_REDUCED_MOTION}
+        controls={reducedMotion}
         onError={() => setErrored(true)}
         className="bg-ink-deep aspect-[16/10] w-full object-cover"
       />
