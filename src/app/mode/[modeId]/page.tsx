@@ -15,7 +15,7 @@ import { env } from '@/lib/env'
 
 export const unstable_instant = { prefetch: 'static', unstable_disableValidation: true }
 
-const VALID_IDS = ['kingsmp', 'mega-earth', 'battle-royale'] as const
+const VALID_IDS = ['kingsmp', 'mega-earth'] as const
 
 export function generateStaticParams() {
   return VALID_IDS.map((modeId) => ({ modeId }))

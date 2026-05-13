@@ -101,7 +101,7 @@ export const siteConfig = {
       tag: { label: 'MỚI', color: 'lime' },
       gradient: 'from-error-container/40 to-surface-container',
       icon: 'sword',
-      href: '/mode/battle-royale',
+      href: 'https://battleroyale.kingmc.vn',
     },
   ] satisfies GameMode[],
 } as const

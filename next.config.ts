@@ -14,6 +14,15 @@ const nextConfig: NextConfig = {
   },
   poweredByHeader: false,
   reactStrictMode: true,
+  async redirects() {
+    return [
+      {
+        source: '/mode/battle-royale',
+        destination: 'https://battleroyale.kingmc.vn',
+        permanent: false,
+      },
+    ]
+  },
 }
 
 export default withBundleAnalyzer(nextConfig)
