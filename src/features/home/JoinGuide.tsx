@@ -83,6 +83,7 @@ function VideoPanel({ active, src, fallbackIp }: VideoPanelProps) {
       <video
         ref={ref}
         src={src}
+        autoPlay={!PREFERS_REDUCED_MOTION}
         muted
         loop
         playsInline
