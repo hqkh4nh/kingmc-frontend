@@ -54,8 +54,8 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="vi" className={`${bricolage.variable} ${jakarta.variable} ${jetbrains.variable}`}>
-      <body className="bg-ink text-on-surface min-h-screen font-sans antialiased">
+    <html lang="vi" className={`${bricolage.variable} ${jakarta.variable} ${jetbrains.variable}`} suppressHydrationWarning>
+      <body className="bg-ink text-on-surface min-h-screen font-sans antialiased" suppressHydrationWarning>
         <WebVitals />
         <GrainOverlay />
         <ScrollProgress />
