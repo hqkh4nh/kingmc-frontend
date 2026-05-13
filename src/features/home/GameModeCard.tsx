@@ -18,20 +18,12 @@ export default function GameModeCard({ mode, featured = false }: Props) {
         featured ? 'h-full' : ''
       } shadow-[0_0_0_1px_rgba(245,239,226,0.06)_inset,0_4px_16px_-4px_rgba(0,0,0,0.4)] hover:shadow-[0_0_0_1px_rgba(220,184,116,0.25)_inset,0_24px_56px_-12px_rgba(0,0,0,0.55),0_0_48px_-12px_rgba(200,163,86,0.18)]`}
     >
-      <div
-        className={`relative overflow-hidden ${
-          featured ? 'aspect-[5/4]' : 'aspect-[16/10]'
-        }`}
-      >
+      <div className={`relative overflow-hidden ${featured ? 'aspect-[5/4]' : 'aspect-[16/10]'}`}>
         <Image
           src={mode.thumbnail}
           alt={mode.title}
           fill
-          sizes={
-            featured
-              ? '(min-width: 1024px) 58vw, 100vw'
-              : '(min-width: 1024px) 42vw, 100vw'
-          }
+          sizes={featured ? '(min-width: 1024px) 58vw, 100vw' : '(min-width: 1024px) 42vw, 100vw'}
           priority={featured}
           className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
         />
