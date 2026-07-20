@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Footer from '@/features/home/Footer'
-import Navbar from '@/features/home/Navbar'
+import SiteHeader from '@/features/home/SiteHeader'
 import Commands from '@/features/mode/Commands'
 import Features from '@/features/mode/Features'
 import ModeCTA from '@/features/mode/ModeCTA'
@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     description: mode.tagline,
     alternates: { canonical: `/mode/${mode.id}` },
     openGraph: {
-      title: `${mode.name} — KingMC`,
+      title: `${mode.name} · KingMC`,
       description: mode.tagline,
       url: `${env.NEXT_PUBLIC_SITE_URL}/mode/${mode.id}`,
     },
@@ -49,7 +49,7 @@ export default async function ModeRoute({ params }: PageProps) {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Game',
-    name: `${mode.name} — KingMC`,
+    name: `${mode.name} · KingMC`,
     description: mode.tagline,
     applicationCategory: 'Game',
     operatingSystem:
@@ -66,7 +66,7 @@ export default async function ModeRoute({ params }: PageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <div className="relative min-h-screen overflow-x-clip">
-        <Navbar />
+        <SiteHeader />
         <main>
           <ModeHero mode={mode} />
           <QuickInfo info={mode.quickInfo} />

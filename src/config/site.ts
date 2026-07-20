@@ -40,8 +40,9 @@ export const siteConfig = {
     name: 'KingMC',
     nameUpper: 'KINGMC',
     tagline: 'Máy chủ Minecraft #1 Việt Nam',
-    copyright: '© 2026 KingMC.VN - Máy chủ Minecraft Việt Nam',
-    legal: 'Không liên kết với Mojang AB.',
+    copyright:
+      'KingMC © 2026. Không được Mojang AB / Microsoft chấp thuận, tài trợ hoặc xác nhận. "Minecraft" là nhãn hiệu của Mojang AB. Mọi nhãn hiệu khác thuộc chủ sở hữu tương ứng.',
+    legal: 'KingMC.VN. Bảo lưu mọi quyền.',
   },
   server: {
     mainIp: 'kingmc.vn',
@@ -72,6 +73,17 @@ export const siteConfig = {
     { label: 'Bảng xếp hạng', href: '#' },
     { label: 'Danh sách cấm', href: '#' },
     { label: 'Hỗ trợ', href: 'https://discord.gg/kingmcvn', external: true },
+  ] satisfies NavLink[],
+  topLinks: [
+    { label: 'Giới thiệu', href: '#' },
+    { label: 'Đối tác', href: '#' },
+    { label: 'Liên hệ', href: 'https://discord.gg/kingmcvn', external: true },
+  ] satisfies NavLink[],
+  // Link pháp lý ở footer → trang /legal/[slug].
+  legalLinks: [
+    { label: 'Thỏa thuận người dùng', href: '/legal/thoa-thuan-nguoi-dung' },
+    { label: 'Chính sách bảo mật', href: '/legal/chinh-sach-bao-mat' },
+    { label: 'Quy định ủng hộ', href: '/legal/quy-dinh-ung-ho' },
   ] satisfies NavLink[],
   gameModes: [
     {

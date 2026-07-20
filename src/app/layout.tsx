@@ -28,11 +28,11 @@ const jetbrains = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(env.NEXT_PUBLIC_SITE_URL),
   title: {
-    default: 'KingMC — Máy chủ Minecraft #1 Việt Nam',
-    template: '%s — KingMC',
+    default: 'KingMC · Máy chủ Minecraft #1 Việt Nam',
+    template: '%s · KingMC',
   },
   description:
-    'KingMC — Máy chủ Minecraft #1 Việt Nam. KingSMP, Mega Earth, Battle Royale. IP: kingmc.vn',
+    'KingMC · Máy chủ Minecraft #1 Việt Nam. KingSMP, Mega Earth, Battle Royale. IP: kingmc.vn',
   openGraph: {
     type: 'website',
     locale: 'vi_VN',

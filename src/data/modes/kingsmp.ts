@@ -3,7 +3,7 @@ import type { ModeContent } from './types'
 export const kingsmp: ModeContent = {
   id: 'kingsmp',
   name: 'KingSMP',
-  tagline: 'Sinh tồn cộng đồng, kinh tế mở. Build căn cứ, làm giàu trên KingSMP — Mùa 4.',
+  tagline: 'Sinh tồn cộng đồng, kinh tế mở. Build căn cứ, làm giàu trên KingSMP, Mùa 4.',
   hero: {
     badge: { label: 'HOT', color: 'gold' },
     backgroundImage: '/images/hero-background.png',
@@ -20,7 +20,7 @@ export const kingsmp: ModeContent = {
     notes: ['CẤM HACK'],
   },
   quickStart: {
-    welcomeTitle: 'KingSMP — MÙA 4',
+    welcomeTitle: 'KingSMP · MÙA 4',
     welcomeBody:
       'Chào mừng tới máy chủ! /RTP để bắt đầu sinh tồn, /SELL để bán đồ, /HUONGDAN để xem hướng dẫn chi tiết.',
     starterCommands: [
@@ -37,7 +37,7 @@ export const kingsmp: ModeContent = {
     },
     {
       title: 'AFK Shards',
-      body: 'Treo máy ở khu AFK để kiếm Shards — đổi spawner, key, và nhiều vật phẩm khác.',
+      body: 'Treo máy ở khu AFK để kiếm Shards, dùng đổi spawner, key và nhiều vật phẩm khác.',
       command: '/afk · /warp afk',
     },
     {
@@ -131,7 +131,7 @@ export const kingsmp: ModeContent = {
       prefix: '≽✦',
       accent: 'from-gold/30 to-gold/10',
       preview: '≽✦KhanhHuynh',
-      requires: 'Đăng video về KingMC/KingSMP trên TikTok hoặc YouTube — hạn 7 ngày',
+      requires: 'Đăng video về KingMC/KingSMP trên TikTok hoặc YouTube, hạn 7 ngày',
       benefits: [
         '/sethome tối đa 6 vị trí',
         '/ah bán được 40 món lên chợ',
