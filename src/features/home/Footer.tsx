@@ -1,9 +1,10 @@
+import Link from 'next/link'
 import Logo from '@/components/server/Logo'
 import SocialIconLink from '@/components/server/SocialIconLink'
 import { siteConfig } from '@/config/site'
 
 export default function Footer() {
-  const { brand, social } = siteConfig
+  const { brand, social, legalLinks } = siteConfig
   return (
     <footer className="mt-stack-2xl px-margin pb-stack-md pt-stack-lg relative">
       {/* Hairline divider with fade */}
@@ -28,11 +29,34 @@ export default function Footer() {
           <SocialIconLink platform="youtube" href={social.youtube} size="md" />
         </div>
 
-        <p className="text-on-surface-faded text-center text-[12px] tracking-tight">
-          {brand.copyright}
-          <span className="text-paper/15 mx-2">·</span>
-          {brand.legal}
-        </p>
+        <nav aria-label="Liên kết pháp lý">
+          <ul className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1">
+            {legalLinks.map((link, i) => (
+              <li key={link.href} className="flex items-center">
+                {i > 0 && (
+                  <span aria-hidden="true" className="text-paper/15 mr-2">
+                    ·
+                  </span>
+                )}
+                <Link
+                  href={link.href}
+                  className="text-on-surface-muted hover:text-gold-bright text-[13px] tracking-tight transition-colors duration-200"
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <div className="gap-stack-xs mt-stack-xs flex flex-col items-center">
+          <p className="text-on-surface-faded max-w-[640px] text-center text-[12px] leading-relaxed tracking-tight">
+            {brand.copyright}
+          </p>
+          <p className="text-on-surface-faded/80 text-center text-[12px] tracking-tight">
+            {brand.legal}
+          </p>
+        </div>
       </div>
     </footer>
   )
