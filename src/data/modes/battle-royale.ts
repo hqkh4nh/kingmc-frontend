@@ -9,7 +9,7 @@ export const battleRoyale: ModeContent = {
     backgroundImage: '/images/hero-background.png',
     icon: 'sword',
     longDescription:
-      'Spawn vào thế giới custom-generated rộng lớn, chiến đấu đến chết. Khám phá công thức chế tạo độc đáo và huyền thoại. Máu không tự hồi — chỉ phục hồi bằng golden apple và đầu enemy. Hỗ trợ Simple Voice Chat mod (proximity chat).',
+      'Spawn vào thế giới custom-generated rộng lớn, chiến đấu đến chết. Khám phá công thức chế tạo độc đáo và huyền thoại. Máu không tự hồi, chỉ phục hồi bằng golden apple và đầu enemy. Hỗ trợ Simple Voice Chat mod (proximity chat).',
   },
   quickInfo: {
     versions: '1.21.8 - 1.21.11',
@@ -19,7 +19,7 @@ export const battleRoyale: ModeContent = {
   quickStart: {
     welcomeTitle: 'Cách chơi',
     welcomeBody:
-      'Spawn vào map ngẫu nhiên, sống sót và là người cuối cùng. Máu không tự hồi — kiếm golden apple hoặc giết enemy lấy đầu để heal. Hỗ trợ proximity voice chat qua Simple Voice Chat mod.',
+      'Spawn vào map ngẫu nhiên, sống sót và là người cuối cùng. Máu không tự hồi, kiếm golden apple hoặc giết enemy lấy đầu để heal. Hỗ trợ proximity voice chat qua Simple Voice Chat mod.',
     starterCommands: [
       { cmd: '/quests', desc: 'Mở danh sách quests hằng ngày' },
       { cmd: 'Solo Royale', desc: 'Chế độ một mình' },
@@ -50,7 +50,7 @@ export const battleRoyale: ModeContent = {
     },
     {
       title: 'Simple Voice Chat',
-      body: 'Proximity voice chat — nói chuyện với người chơi gần bạn trong game. Cần cài mod client.',
+      body: 'Proximity voice chat: nói chuyện với người chơi gần bạn trong game. Cần cài mod client.',
     },
   ],
   ranks: [

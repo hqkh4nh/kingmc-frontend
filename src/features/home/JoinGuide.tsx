@@ -69,7 +69,7 @@ function VideoPanel({ active, src, fallbackIp }: VideoPanelProps) {
     return (
       <div className="bg-surface-2 flex aspect-[16/10] items-center justify-center rounded-2xl p-8 text-center shadow-[0_0_0_1px_rgba(245,239,226,0.06)_inset]">
         <p className="text-on-surface-muted text-[14px]">
-          Video không khả dụng — IP server: <strong className="text-paper">{fallbackIp}</strong>
+          Video không khả dụng. IP server: <strong className="text-paper">{fallbackIp}</strong>
         </p>
       </div>
     )
