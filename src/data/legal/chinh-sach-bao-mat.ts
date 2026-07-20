@@ -17,7 +17,7 @@ const doc: LegalDoc = {
         },
         {
           type: 'p',
-          text: 'Chúng tôi xử lý dữ liệu cá nhân trên tinh thần tuân thủ Nghị định 13/2023/NĐ-CP về bảo vệ dữ liệu cá nhân và các quy định pháp luật Việt Nam có liên quan.',
+          text: 'Chúng tôi xử lý dữ liệu cá nhân theo Nghị định 13/2023/NĐ-CP về bảo vệ dữ liệu cá nhân và các quy định pháp luật Việt Nam liên quan.',
         },
       ],
     },
@@ -145,7 +145,7 @@ const doc: LegalDoc = {
       blocks: [
         {
           type: 'p',
-          text: 'Đối với người chơi là trẻ em (dưới 16 tuổi theo quy định), việc xử lý dữ liệu cá nhân cần có sự đồng ý của cha mẹ hoặc người giám hộ. Nếu phát hiện đã thu thập dữ liệu của trẻ em mà không có sự đồng ý hợp lệ, chúng tôi sẽ tiến hành xóa theo quy định.',
+          text: 'Đối với người chơi là trẻ em (dưới 16 tuổi theo quy định), việc xử lý dữ liệu cá nhân cần có sự đồng ý của cha mẹ hoặc người giám hộ. Nếu phát hiện đã thu thập dữ liệu của trẻ em mà không có sự đồng ý hợp lệ, chúng tôi sẽ xóa theo quy định.',
         },
       ],
     },

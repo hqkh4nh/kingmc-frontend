@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import Icon from '@/components/server/Icon'
-import { LEGAL_DISCLAIMER } from '@/data/legal'
 import type { LegalBlock, LegalDoc } from '@/data/legal'
 
 /** `2026-07-21` → `21/07/2026` (parse thủ công để tránh lệch múi giờ). */
@@ -88,13 +87,6 @@ export default function LegalArticle({ doc }: { doc: LegalDoc }) {
             </section>
           ))}
         </div>
-
-        {/* Lưu ý tham khảo */}
-        <aside className="border-border-soft bg-surface/40 mt-stack-lg rounded-lg border border-dashed p-5">
-          <p className="text-on-surface-faded text-[13px] leading-relaxed tracking-tight">
-            {LEGAL_DISCLAIMER}
-          </p>
-        </aside>
       </div>
     </article>
   )

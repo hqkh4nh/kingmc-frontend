@@ -170,7 +170,7 @@ const doc: LegalDoc = {
       blocks: [
         {
           type: 'p',
-          text: 'KingMC có thể cập nhật thỏa thuận này để phù hợp với thực tế vận hành và quy định pháp luật. Bản cập nhật được đăng tải công khai trên website. Việc bạn tiếp tục sử dụng dịch vụ sau khi thay đổi có hiệu lực đồng nghĩa với việc chấp thuận nội dung mới.',
+          text: 'KingMC có thể cập nhật thỏa thuận này để phù hợp với thực tế vận hành và quy định pháp luật. Bản cập nhật được đăng tải công khai trên website. Bạn tiếp tục sử dụng dịch vụ sau khi thay đổi có hiệu lực được coi là chấp thuận nội dung mới.',
         },
       ],
     },
