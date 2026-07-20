@@ -3,7 +3,7 @@ import Footer from '@/features/home/Footer'
 import GameModes from '@/features/home/GameModes'
 import Hero from '@/features/home/Hero'
 import JoinGuide from '@/features/home/JoinGuide'
-import Navbar from '@/features/home/Navbar'
+import SiteHeader from '@/features/home/SiteHeader'
 
 export const unstable_instant = { prefetch: 'static' }
 
@@ -46,7 +46,7 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(homeJsonLd) }}
       />
       <div className="relative min-h-screen overflow-x-clip">
-        <Navbar />
+        <SiteHeader />
         <main>
           <Hero />
           <GameModes />

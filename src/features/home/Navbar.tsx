@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import type { MouseEvent } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -12,19 +12,11 @@ import Logo from '@/components/server/Logo'
 import { siteConfig } from '@/config/site'
 import { useCopyIp } from '@/hooks/useCopyIp'
 
-export default function Navbar() {
+export default function Navbar({ scrolled }: { scrolled: boolean }) {
   const [open, setOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
   const { navLinks, social } = siteConfig
   const playNow = useCopyIp({ ip: 'kingmc.vn', scrollToId: 'join-guide' })
   const pathname = usePathname()
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24)
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
 
   const onLogoClick = (e: MouseEvent<HTMLAnchorElement>) => {
     if (pathname === '/') {
@@ -34,7 +26,7 @@ export default function Navbar() {
   }
 
   return (
-    <header className="fixed inset-x-0 top-4 z-50 flex justify-center px-4">
+    <div className="flex justify-center px-4 pt-4 md:pt-2">
       <nav
         className={`rounded-pill relative flex w-full max-w-[var(--container-max)] items-center justify-between px-3 py-3 pl-5 transition-all duration-500 ease-out ${
           scrolled
@@ -162,6 +154,6 @@ export default function Navbar() {
           </div>
         )}
       </nav>
-    </header>
+    </div>
   )
 }

@@ -1,11 +1,11 @@
 import Link from 'next/link'
 import Footer from '@/features/home/Footer'
-import Navbar from '@/features/home/Navbar'
+import SiteHeader from '@/features/home/SiteHeader'
 
 export default function NotFound() {
   return (
     <div className="relative min-h-screen overflow-x-clip">
-      <Navbar />
+      <SiteHeader />
       <main className="flex min-h-screen flex-col items-center justify-center px-6 text-center">
         <p className="text-overline text-gold-bright">404</p>
         <h1 className="text-display-lg text-paper mt-stack-md">Không tìm thấy trang</h1>

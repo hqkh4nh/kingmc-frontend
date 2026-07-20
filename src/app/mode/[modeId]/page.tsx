@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Footer from '@/features/home/Footer'
-import Navbar from '@/features/home/Navbar'
+import SiteHeader from '@/features/home/SiteHeader'
 import Commands from '@/features/mode/Commands'
 import Features from '@/features/mode/Features'
 import ModeCTA from '@/features/mode/ModeCTA'
@@ -66,7 +66,7 @@ export default async function ModeRoute({ params }: PageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <div className="relative min-h-screen overflow-x-clip">
-        <Navbar />
+        <SiteHeader />
         <main>
           <ModeHero mode={mode} />
           <QuickInfo info={mode.quickInfo} />
