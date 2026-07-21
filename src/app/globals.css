@@ -168,44 +168,6 @@
   --color-mode-battle-royale-deep: var(--color-rust-deep);
 }
 
-/* ============================================================
-   THEME LAYERS — scoped by [data-theme] on a page subtree.
-   Editorial = the default @theme values (untouched). Cinematic
-   & Voxel re-point the semantic accent + a few surfaces so the
-   SAME primitives (Button, Chip, cards) inherit the new mood.
-   ============================================================ */
-[data-theme='cinematic'] {
-  --color-ink: #05070c;
-  --color-ink-deep: #02040a;
-  --color-surface: #0a0f18;
-  --color-surface-2: #0e141f;
-  --color-surface-3: #131b28;
-  /* cold cyan-steel launcher accent */
-  --color-accent: #58b4ff;
-  --color-accent-bright: #8fd0ff;
-  --color-accent-deep: #2f74b8;
-  --color-gold: #58b4ff;
-  --color-gold-bright: #8fd0ff;
-  --color-gold-deep: #2f74b8;
-  --glow-accent: 88, 180, 255;
-}
-
-[data-theme='voxel'] {
-  --color-ink: #121a26;
-  --color-ink-deep: #0c121b;
-  --color-surface: #1a2636;
-  --color-surface-2: #20304a;
-  --color-surface-3: #263a52;
-  /* bright grass-green voxel accent */
-  --color-accent: #7bc96f;
-  --color-accent-bright: #9fe08f;
-  --color-accent-deep: #4f8f45;
-  --color-gold: #f4c430;
-  --color-gold-bright: #ffd94a;
-  --color-gold-deep: #c99a12;
-  --glow-accent: 123, 201, 111;
-}
-
 /* Editorial serif accent — apply to short in-line phrases only */
 @utility font-editorial {
   font-family: var(--font-editorial);
