@@ -1,10 +1,5 @@
 import type { Metadata, Viewport } from 'next'
-import {
-  Bricolage_Grotesque,
-  Fraunces,
-  JetBrains_Mono,
-  Plus_Jakarta_Sans,
-} from 'next/font/google'
+import { Bricolage_Grotesque, Fraunces, JetBrains_Mono, Plus_Jakarta_Sans } from 'next/font/google'
 import GrainOverlay from '@/components/server/GrainOverlay'
 import ScrollProgress from '@/components/client/ScrollProgress'
 import WebVitals from '@/components/client/WebVitals'

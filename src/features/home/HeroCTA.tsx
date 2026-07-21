@@ -34,7 +34,7 @@ function Magnetic({ children }: { children: React.ReactNode }) {
       ref={ref}
       onPointerMove={onMove}
       onPointerLeave={reset}
-      className="inline-flex transition-transform duration-500 ease-fluid will-change-transform"
+      className="ease-fluid inline-flex transition-transform duration-500 will-change-transform"
     >
       {children}
     </span>
@@ -49,7 +49,7 @@ export default function HeroCTA() {
         <Button variant="primary" size="lg" onClick={playNow} className="pr-2.5">
           Chơi ngay
           {/* Button-in-button trailing icon — nested circle, kinetic on hover */}
-          <span className="bg-gold-ink/15 ml-1 flex h-9 w-9 items-center justify-center rounded-full transition-all duration-500 ease-fluid group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-105">
+          <span className="bg-gold-ink/15 ease-fluid ml-1 flex h-9 w-9 items-center justify-center rounded-full transition-all duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-105">
             <Icon name="arrow-right" size={18} />
           </span>
         </Button>

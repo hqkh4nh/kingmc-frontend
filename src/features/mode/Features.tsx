@@ -25,8 +25,8 @@ function FeatureTile({
     <article
       ref={ref}
       style={{ transitionDelay: `${index * 60}ms` }}
-      className={`bg-surface/40 edge-lit group relative overflow-hidden rounded-3xl transition-all duration-700 ease-fluid motion-reduce:translate-y-0 motion-reduce:opacity-100 motion-reduce:blur-0 motion-reduce:transition-none ${
-        revealed ? 'translate-y-0 opacity-100 blur-0' : 'translate-y-8 opacity-0 blur-sm'
+      className={`bg-surface/40 edge-lit group ease-fluid motion-reduce:blur-0 relative overflow-hidden rounded-3xl transition-all duration-700 motion-reduce:translate-y-0 motion-reduce:opacity-100 motion-reduce:transition-none ${
+        revealed ? 'blur-0 translate-y-0 opacity-100' : 'translate-y-8 opacity-0 blur-sm'
       } ${span2 ? 'sm:col-span-2' : ''} ${lead ? 'p-8' : 'p-6'}`}
     >
       {lead && (

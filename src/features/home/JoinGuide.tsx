@@ -139,7 +139,9 @@ export default function JoinGuide() {
               </span>
               <span className="min-w-0">
                 <span className="text-paper block text-[14px] font-medium">{s.t}</span>
-                <span className="text-on-surface-faded block text-[12.5px] leading-snug">{s.d}</span>
+                <span className="text-on-surface-faded block text-[12.5px] leading-snug">
+                  {s.d}
+                </span>
               </span>
             </li>
           ))}

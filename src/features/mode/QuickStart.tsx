@@ -20,7 +20,7 @@ export default function QuickStart({ data }: Props) {
 
         <div
           ref={ref}
-          className={`gap-gutter grid transition-all duration-700 ease-fluid motion-reduce:translate-y-0 motion-reduce:opacity-100 motion-reduce:transition-none lg:grid-cols-12 ${
+          className={`gap-gutter ease-fluid grid transition-all duration-700 motion-reduce:translate-y-0 motion-reduce:opacity-100 motion-reduce:transition-none lg:grid-cols-12 ${
             revealed ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
           }`}
         >
@@ -36,7 +36,9 @@ export default function QuickStart({ data }: Props) {
           <div className="flex flex-col gap-3 lg:col-span-5">
             {data.starterCommands.map((c) => (
               <div key={c.cmd} className="bg-surface/40 edge-lit rounded-2xl px-5 py-4">
-                <code className="text-gold-bright font-mono text-[15px] font-semibold">{c.cmd}</code>
+                <code className="text-gold-bright font-mono text-[15px] font-semibold">
+                  {c.cmd}
+                </code>
                 <p className="text-on-surface-muted mt-1.5 text-[13px]">{c.desc}</p>
               </div>
             ))}

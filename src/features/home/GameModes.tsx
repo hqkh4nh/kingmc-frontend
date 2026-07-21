@@ -28,8 +28,8 @@ function Panel({ mode, index }: { mode: GameMode; index: number }) {
     <div
       ref={ref}
       style={{ ['--panel-accent' as string]: accent }}
-      className={`gap-gutter grid items-center transition-all duration-[900ms] ease-fluid motion-reduce:translate-y-0 motion-reduce:opacity-100 motion-reduce:blur-0 motion-reduce:transition-none lg:grid-cols-2 ${
-        revealed ? 'translate-y-0 opacity-100 blur-0' : 'translate-y-14 opacity-0 blur-md'
+      className={`gap-gutter ease-fluid motion-reduce:blur-0 grid items-center transition-all duration-[900ms] motion-reduce:translate-y-0 motion-reduce:opacity-100 motion-reduce:transition-none lg:grid-cols-2 ${
+        revealed ? 'blur-0 translate-y-0 opacity-100' : 'translate-y-14 opacity-0 blur-md'
       }`}
     >
       {/* Media */}
@@ -40,7 +40,7 @@ function Panel({ mode, index }: { mode: GameMode; index: number }) {
             alt={mode.title}
             fill
             sizes="(min-width: 1024px) 50vw, 100vw"
-            className="object-cover transition-transform duration-700 ease-fluid group-hover:scale-[1.05]"
+            className="ease-fluid object-cover transition-transform duration-700 group-hover:scale-[1.05]"
           />
           <div
             aria-hidden="true"

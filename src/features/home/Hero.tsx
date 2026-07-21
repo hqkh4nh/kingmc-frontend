@@ -15,7 +15,7 @@ export default function Hero() {
     >
       <HeroBackdrop />
 
-      <div className="relative z-10 flex w-full max-w-narrow flex-1 flex-col items-center justify-center text-center">
+      <div className="max-w-narrow relative z-10 flex w-full flex-1 flex-col items-center justify-center text-center">
         {/* Eyebrow — pill badge, not a bare line */}
         <div className="animate-fade mb-stack-md [animation-delay:60ms]">
           <span className="rounded-pill text-overline text-on-surface-muted edge-lit bg-surface/40 inline-flex items-center px-4 py-2 backdrop-blur-sm">

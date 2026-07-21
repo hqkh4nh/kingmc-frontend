@@ -15,7 +15,7 @@ function CategoryCard({ cat, index }: { cat: Category; index: number }) {
     <div
       ref={ref}
       style={{ transitionDelay: `${index * 50}ms` }}
-      className={`bg-surface/40 edge-lit rounded-3xl p-6 transition-all duration-700 ease-fluid motion-reduce:translate-y-0 motion-reduce:opacity-100 motion-reduce:transition-none ${
+      className={`bg-surface/40 edge-lit ease-fluid rounded-3xl p-6 transition-all duration-700 motion-reduce:translate-y-0 motion-reduce:opacity-100 motion-reduce:transition-none ${
         revealed ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
       }`}
     >

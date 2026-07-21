@@ -17,7 +17,10 @@ const easeOutExpo = (t: number) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t))
  * null (loading), and snaps straight to `target` under reduced-motion or before
  * `start`. Live refetches tween from the last shown value instead of resetting to 0.
  */
-export function useCountUp(target: number | null, { durationMs = 1400, start = true }: Options = {}) {
+export function useCountUp(
+  target: number | null,
+  { durationMs = 1400, start = true }: Options = {},
+) {
   const reduced = usePrefersReducedMotion()
   const animate = start && !reduced && target !== null
   const [animatedValue, setAnimatedValue] = useState(0)

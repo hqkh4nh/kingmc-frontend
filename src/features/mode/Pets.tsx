@@ -25,7 +25,7 @@ export default function Pets({ data }: Props) {
     <section className="px-margin py-stack-2xl">
       <div
         ref={ref}
-        className={`mx-auto max-w-[var(--container-max)] transition-all duration-700 ease-fluid motion-reduce:translate-y-0 motion-reduce:opacity-100 motion-reduce:transition-none ${
+        className={`ease-fluid mx-auto max-w-[var(--container-max)] transition-all duration-700 motion-reduce:translate-y-0 motion-reduce:opacity-100 motion-reduce:transition-none ${
           revealed ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
         }`}
       >

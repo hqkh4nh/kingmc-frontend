@@ -67,13 +67,15 @@ export default function CommunityBand() {
                   className="group rounded-pill focus-visible:ring-offset-surface-2 inline-flex h-12 items-center justify-center gap-2.5 bg-[#5865f2] text-[15px] font-semibold text-white shadow-[0_10px_24px_-8px_rgba(88,101,242,0.6)] transition-transform duration-200 ease-out hover:-translate-y-px hover:brightness-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#5865f2]/70 focus-visible:ring-offset-2 active:scale-[0.98]"
                 >
                   Vào Discord
-                  <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white/15 transition-transform duration-500 ease-fluid group-hover:translate-x-0.5">
+                  <span className="ease-fluid flex h-7 w-7 items-center justify-center rounded-full bg-white/15 transition-transform duration-500 group-hover:translate-x-0.5">
                     <Icon name="arrow-right" size={15} />
                   </span>
                 </a>
 
                 <div className="border-border-hairline flex items-center justify-between border-t pt-5">
-                  <span className="text-on-surface-faded text-[12px] tracking-tight">Kênh khác</span>
+                  <span className="text-on-surface-faded text-[12px] tracking-tight">
+                    Kênh khác
+                  </span>
                   <div className="flex items-center gap-2">
                     <SocialIconLink platform="facebook-page" href={social.facebookPage} size="sm" />
                     <SocialIconLink platform="tiktok" href={social.tiktok} size="sm" />
