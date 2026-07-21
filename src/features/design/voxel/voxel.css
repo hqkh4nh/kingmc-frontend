@@ -1,0 +1,70 @@
+/* Voxel variant — isolated 3D block motion. Imported only by the voxel page so
+   these keyframes never touch the rest of the site. */
+
+.voxel-scene {
+  perspective: 900px;
+}
+
+.voxel-cube {
+  position: relative;
+  transform-style: preserve-3d;
+  animation: voxel-spin 18s linear infinite;
+}
+
+.voxel-float {
+  animation: voxel-float 6s ease-in-out infinite;
+}
+
+/* One-time "place block" pop when the cube mounts (own element, so it never
+   fights the spin/float transforms). */
+.voxel-pop {
+  animation: voxel-place 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+}
+
+@keyframes voxel-place {
+  0% {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.voxel-face {
+  position: absolute;
+  inset: 0;
+  border: 2px solid rgba(0, 0, 0, 0.25);
+  box-shadow: inset 0 0 24px rgba(0, 0, 0, 0.25);
+}
+
+@keyframes voxel-spin {
+  from {
+    transform: rotateX(-24deg) rotateY(0deg);
+  }
+  to {
+    transform: rotateX(-24deg) rotateY(360deg);
+  }
+}
+
+@keyframes voxel-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .voxel-cube {
+    animation: none;
+    transform: rotateX(-24deg) rotateY(-32deg);
+  }
+  .voxel-float,
+  .voxel-pop {
+    animation: none;
+  }
+}
