@@ -3,7 +3,8 @@ import { env } from '@/lib/env'
 
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: [{ userAgent: '*', allow: '/' }],
+    // /design/* holds internal design-preview variants — keep them out of crawlers.
+    rules: [{ userAgent: '*', allow: '/', disallow: '/design/' }],
     sitemap: `${env.NEXT_PUBLIC_SITE_URL}/sitemap.xml`,
   }
 }
