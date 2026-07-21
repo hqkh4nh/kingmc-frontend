@@ -1,42 +1,98 @@
-import type { GameMode } from '@/config/site'
-import { siteConfig } from '@/config/site'
-import GameModeCard from './GameModeCard'
+'use client'
+
+import Image from 'next/image'
+import Link from 'next/link'
+import Chip from '@/components/server/Chip'
+import Icon from '@/components/server/Icon'
+import { siteConfig, type GameMode } from '@/config/site'
+import { useScrollReveal } from '@/hooks/useScrollReveal'
+
+// Per-mode accent drives the number, media wash and "Khám phá" link.
+const ACCENT: Record<GameMode['id'], string> = {
+  kingsmp: 'var(--color-moss)',
+  'mega-earth': 'var(--color-lapis)',
+  'battle-royale': 'var(--color-rust)',
+}
+
+function Panel({ mode, index, total }: { mode: GameMode; index: number; total: number }) {
+  const { ref, revealed } = useScrollReveal<HTMLDivElement>()
+  const flipped = index % 2 === 1
+  const accent = ACCENT[mode.id]
+
+  return (
+    <div
+      ref={ref}
+      style={{ ['--panel-accent' as string]: accent }}
+      className={`gap-gutter grid items-center transition-all duration-[900ms] ease-fluid motion-reduce:translate-y-0 motion-reduce:opacity-100 motion-reduce:blur-0 motion-reduce:transition-none lg:grid-cols-2 ${
+        revealed ? 'translate-y-0 opacity-100 blur-0' : 'translate-y-14 opacity-0 blur-md'
+      }`}
+    >
+      {/* Media */}
+      <div className={flipped ? 'lg:order-2' : ''}>
+        <div className="group relative aspect-[16/10] overflow-hidden rounded-3xl shadow-[0_40px_100px_-40px_rgba(0,0,0,0.75)] ring-1 ring-[color-mix(in_srgb,var(--panel-accent)_20%,transparent)]">
+          <Image
+            src={mode.thumbnail}
+            alt={mode.title}
+            fill
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            className="object-cover transition-transform duration-700 ease-fluid group-hover:scale-[1.05]"
+          />
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 [background:linear-gradient(120deg,transparent_45%,color-mix(in_srgb,var(--panel-accent)_35%,transparent)_100%)]"
+          />
+        </div>
+      </div>
+
+      {/* Copy */}
+      <div className={flipped ? 'lg:order-1 lg:pr-10' : 'lg:pl-10'}>
+        <span className="font-mono text-[13px] tracking-[0.3em] text-[color:var(--panel-accent)]">
+          {String(index + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
+        </span>
+        <div className="mt-3 flex flex-wrap items-center gap-3">
+          <h3 className="font-display text-paper text-[clamp(1.9rem,4vw,2.75rem)] leading-tight font-bold">
+            {mode.title}
+          </h3>
+          {mode.tag && <Chip color={mode.tag.color}>{mode.tag.label}</Chip>}
+        </div>
+        <p className="text-on-surface-muted mt-4 max-w-md text-[16px] leading-relaxed">
+          {mode.description}
+        </p>
+        <Link
+          href={mode.href}
+          aria-label={`Khám phá mode ${mode.title}`}
+          className="group mt-6 inline-flex items-center gap-2 text-[12px] font-semibold tracking-[0.2em] text-[color:var(--panel-accent)] uppercase transition-all hover:gap-3.5"
+        >
+          Khám phá
+          <Icon name="arrow-right" size={16} />
+        </Link>
+      </div>
+    </div>
+  )
+}
 
 export default function GameModes() {
   const modes = siteConfig.gameModes as GameMode[]
-  const featured = modes[0]
-  const rest = modes.slice(1)
-
-  if (!featured) return null
 
   return (
     <section id="game-modes" className="px-margin py-stack-2xl relative">
       <div className="mx-auto max-w-[var(--container-max)]">
-        {/* Editorial header — asymmetric */}
-        <header className="mb-stack-lg gap-gutter grid items-end md:grid-cols-12">
-          <div className="md:col-span-7">
-            <p className="text-overline text-on-surface-faded mb-3">
-              <span className="text-gold-bright">01.</span> Thế giới của bạn
-            </p>
-            <h2 className="font-display text-paper text-[clamp(2.5rem,5vw,3.5rem)] leading-[1.05] font-semibold tracking-[-0.025em]">
-              3 chế độ chơi. <span className="text-gold-bright italic">Cùng một IP.</span>
-            </h2>
-          </div>
-          <p className="text-body-md text-on-surface-muted max-w-md md:col-span-5 md:pb-2">
-            Ba kiểu chơi khác nhau. Cùng kết nối qua kingmc.vn.
+        <header className="mb-stack-lg max-w-2xl">
+          <p className="text-overline text-on-surface-faded mb-3">
+            <span className="text-accent-bright">01.</span> Thế giới của bạn
           </p>
+          <h2 className="font-display text-paper text-display-lg font-semibold">
+            Ba{' '}
+            <span className="font-editorial text-accent-bright text-[1.05em] italic">
+              chế độ chơi.
+            </span>
+          </h2>
         </header>
 
-        {/* Asymmetric 7:5 magazine spread on lg, stack on smaller */}
-        <div className="gap-gutter grid lg:grid-cols-12">
-          <div className="lg:col-span-7">
-            <GameModeCard mode={featured} featured />
-          </div>
-          <div className="gap-gutter grid lg:col-span-5 lg:grid-rows-2">
-            {rest.map((mode) => (
-              <GameModeCard key={mode.id} mode={mode} />
-            ))}
-          </div>
+        <div className="gap-stack-2xl flex flex-col">
+          {modes.map((mode, i) => (
+            <Panel key={mode.id} mode={mode} index={i} total={modes.length} />
+          ))}
         </div>
       </div>
     </section>

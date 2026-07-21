@@ -3,6 +3,7 @@ import Logo from '@/components/server/Logo'
 import { siteConfig } from '@/config/site'
 import PlayerCountServer from '@/features/player-count/PlayerCountServer'
 import ConnectionCard from './ConnectionCard'
+import HeroBackdrop from './HeroBackdrop'
 import HeroCTA from './HeroCTA'
 
 export default function Hero() {
@@ -10,52 +11,34 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="px-margin pb-stack-2xl pt-stack-2xl relative isolate flex min-h-[100vh] items-center justify-center overflow-hidden"
+      className="px-margin pt-stack-2xl pb-stack-2xl relative isolate flex min-h-dvh flex-col items-center justify-center overflow-hidden"
     >
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 -z-20 bg-cover bg-center"
-        style={{
-          backgroundImage:
-            'linear-gradient(180deg, rgba(11,16,24,0.65) 0%, rgba(11,16,24,0.85) 60%, rgba(11,16,24,1) 100%), url(/images/hero-background.png)',
-        }}
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_50%_0%,rgba(200,163,86,0.18),transparent_55%)]"
-      />
-      <div className="relative z-10 flex w-full max-w-[var(--container-narrow)] flex-col items-center text-center">
-        <div className="animate-fade mb-stack-md flex flex-col items-center gap-2 [animation-delay:60ms]">
-          <p className="text-overline text-on-surface-faded">
-            MÁY CHỦ MINECRAFT <span className="text-on-surface-muted/60">·</span> SỐ 1 VIỆT NAM
-          </p>
-          <span aria-hidden="true" className="bg-gold-bright/60 h-px w-16" />
+      <HeroBackdrop />
+
+      <div className="relative z-10 flex w-full max-w-narrow flex-1 flex-col items-center justify-center text-center">
+        {/* Eyebrow — pill badge, not a bare line */}
+        <div className="animate-fade mb-stack-md [animation-delay:60ms]">
+          <span className="rounded-pill text-overline text-on-surface-muted edge-lit bg-surface/40 inline-flex items-center px-4 py-2 backdrop-blur-sm">
+            MÁY CHỦ MINECRAFT · SỐ 2 VIỆT NAM
+          </span>
         </div>
+
         <div className="animate-rise [animation-delay:240ms]">
           <Logo variant="with-text" maxHeight={300} className="animate-drift" />
         </div>
         <h1 className="sr-only">{siteConfig.brand.name}</h1>
+
         <p className="animate-rise text-body-lg text-on-surface-muted mt-stack-md max-w-md [animation-delay:420ms]">
           {tagline}.
         </p>
+
         <HeroCTA />
+
         <div className="animate-rise mt-stack-lg [animation-delay:720ms]">
           <Suspense fallback={<ConnectionCard initialPlayerCount={null} />}>
             <PlayerCountServer />
           </Suspense>
         </div>
-      </div>
-      <div className="absolute inset-x-0 bottom-8 flex justify-center">
-        <a
-          href="#game-modes"
-          aria-label="Cuộn xuống xem các chế độ chơi"
-          className="group text-on-surface-faded hover:text-gold-bright flex flex-col items-center gap-2 transition-colors duration-300"
-        >
-          <span aria-hidden="true" className="block h-6 w-px bg-current" />
-          <span className="text-[10px] font-medium tracking-[0.25em] uppercase opacity-60 transition-opacity duration-300 group-hover:opacity-100">
-            cuộn
-          </span>
-        </a>
       </div>
     </section>
   )

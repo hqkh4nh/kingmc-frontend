@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import CommunityBand from '@/features/home/CommunityBand'
 import Footer from '@/features/home/Footer'
 import GameModes from '@/features/home/GameModes'
 import Hero from '@/features/home/Hero'
@@ -8,7 +9,7 @@ import SiteHeader from '@/features/home/SiteHeader'
 export const unstable_instant = { prefetch: 'static' }
 
 export const metadata: Metadata = {
-  title: 'Máy chủ Minecraft #1 Việt Nam',
+  title: 'Máy chủ Minecraft #2 Việt Nam',
   alternates: { canonical: '/' },
 }
 
@@ -32,7 +33,7 @@ const homeJsonLd = {
       '@id': 'https://kingmc.vn#site',
       url: 'https://kingmc.vn',
       name: 'KingMC',
-      description: 'Máy chủ Minecraft #1 Việt Nam',
+      description: 'Máy chủ Minecraft #2 Việt Nam',
       inLanguage: 'vi',
     },
   ],
@@ -51,6 +52,7 @@ export default function HomePage() {
           <Hero />
           <GameModes />
           <JoinGuide />
+          <CommunityBand />
         </main>
         <Footer />
       </div>

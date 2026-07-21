@@ -4,60 +4,86 @@ import SocialIconLink from '@/components/server/SocialIconLink'
 import { siteConfig } from '@/config/site'
 
 export default function Footer() {
-  const { brand, social, legalLinks } = siteConfig
+  const { brand, social, legalLinks, navLinks, topLinks } = siteConfig
   return (
-    <footer className="mt-stack-2xl px-margin pb-stack-md pt-stack-lg relative">
+    <footer className="px-margin pt-stack-lg pb-stack-md relative isolate overflow-hidden">
       {/* Hairline divider with fade */}
       <div
         aria-hidden="true"
         className="inset-x-margin via-paper/12 absolute top-0 h-px bg-gradient-to-r from-transparent to-transparent"
       />
 
-      <div className="gap-stack-md mx-auto flex max-w-[var(--container-max)] flex-col items-center">
-        <div className="flex items-center gap-3">
-          <Logo variant="icon" size={44} className="opacity-90" />
-          <span className="font-display text-paper text-[26px] font-semibold tracking-tight">
-            {brand.nameUpper}
-          </span>
+      <div className="relative mx-auto max-w-[var(--container-max)]">
+        {/* Top: brand + link columns */}
+        <div className="gap-stack-md grid grid-cols-2 md:grid-cols-4">
+          <div className="col-span-2 flex flex-col gap-4 md:col-span-1">
+            <div className="flex items-center gap-3">
+              <Logo variant="icon" size={40} className="opacity-90" />
+              <span className="font-display text-paper text-[22px] font-semibold tracking-tight">
+                {brand.nameUpper}
+              </span>
+            </div>
+            <p className="text-on-surface-faded max-w-[240px] text-[13px] leading-relaxed">
+              {brand.tagline}.
+            </p>
+            <div className="flex items-center gap-2">
+              <SocialIconLink platform="discord" href={social.discord} size="sm" />
+              <SocialIconLink platform="facebook-page" href={social.facebookPage} size="sm" />
+              <SocialIconLink platform="tiktok" href={social.tiktok} size="sm" />
+              <SocialIconLink platform="youtube" href={social.youtube} size="sm" />
+            </div>
+          </div>
+
+          <FooterCol title="Khám phá" links={navLinks} />
+          <FooterCol title="Thông tin" links={topLinks} />
+          <FooterCol title="Pháp lý" links={legalLinks} />
         </div>
 
-        <div className="flex items-center gap-2">
-          <SocialIconLink platform="discord" href={social.discord} size="md" />
-          <SocialIconLink platform="facebook-page" href={social.facebookPage} size="md" />
-          <SocialIconLink platform="facebook-group" href={social.facebookGroup} size="md" />
-          <SocialIconLink platform="tiktok" href={social.tiktok} size="md" />
-          <SocialIconLink platform="youtube" href={social.youtube} size="md" />
-        </div>
-
-        <nav aria-label="Liên kết pháp lý">
-          <ul className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1">
-            {legalLinks.map((link, i) => (
-              <li key={link.href} className="flex items-center">
-                {i > 0 && (
-                  <span aria-hidden="true" className="text-paper/15 mr-2">
-                    ·
-                  </span>
-                )}
-                <Link
-                  href={link.href}
-                  className="text-on-surface-muted hover:text-gold-bright text-[13px] tracking-tight transition-colors duration-200"
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        <div className="gap-stack-xs mt-stack-xs flex flex-col items-center">
-          <p className="text-on-surface-faded max-w-[640px] text-center text-[12px] leading-relaxed tracking-tight">
+        {/* Bottom bar */}
+        <div className="border-border-hairline gap-stack-sm mt-stack-lg flex flex-col items-start justify-between border-t pt-8 md:flex-row md:items-center">
+          <p className="text-on-surface-faded max-w-[640px] text-[12px] leading-relaxed tracking-tight">
             {brand.copyright}
           </p>
-          <p className="text-on-surface-faded/80 text-center text-[12px] tracking-tight">
+          <p className="text-on-surface-faded/80 shrink-0 text-[12px] tracking-tight">
             {brand.legal}
           </p>
         </div>
       </div>
+
+      {/* Oversized wordmark watermark */}
+      <span
+        aria-hidden="true"
+        className="font-display text-paper/[0.03] pointer-events-none absolute -bottom-6 left-1/2 -z-10 -translate-x-1/2 text-[22vw] leading-none font-bold tracking-tighter select-none"
+      >
+        {brand.nameUpper}
+      </span>
     </footer>
+  )
+}
+
+function FooterCol({
+  title,
+  links,
+}: {
+  title: string
+  links: readonly { label: string; href: string; external?: boolean }[]
+}) {
+  return (
+    <nav aria-label={title} className="flex flex-col gap-3">
+      <p className="text-overline text-on-surface-faded">{title}</p>
+      <ul className="flex flex-col gap-2.5">
+        {links.map((link) => (
+          <li key={`${link.label}-${link.href}`}>
+            <Link
+              href={link.href}
+              {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+              className="text-on-surface-muted hover:text-accent-bright text-[13.5px] tracking-tight transition-colors duration-200"
+            >
+              {link.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </nav>
   )
 }

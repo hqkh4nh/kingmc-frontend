@@ -39,7 +39,7 @@ export const siteConfig = {
   brand: {
     name: 'KingMC',
     nameUpper: 'KINGMC',
-    tagline: 'Máy chủ Minecraft #1 Việt Nam',
+    tagline: 'Máy chủ Minecraft #2 Việt Nam',
     copyright:
       'KingMC © 2026. Không được Mojang AB / Microsoft chấp thuận, tài trợ hoặc xác nhận. "Minecraft" là nhãn hiệu của Mojang AB. Mọi nhãn hiệu khác thuộc chủ sở hữu tương ứng.',
     legal: 'KingMC.VN. Bảo lưu mọi quyền.',

@@ -110,13 +110,16 @@ export default function JoinGuide() {
 
       <div className="mx-auto max-w-[var(--container-max)]">
         {/* Asymmetric header */}
-        <header className="mb-stack-lg gap-gutter grid items-end md:grid-cols-12">
+        <header className="mb-stack-md gap-gutter grid items-end md:grid-cols-12">
           <div className="md:col-span-7">
             <p className="text-overline text-on-surface-faded mb-3">
-              <span className="text-gold-bright">02.</span> Bắt đầu trong 30 giây
+              <span className="text-accent-bright">02.</span> Bắt đầu trong 30 giây
             </p>
-            <h2 className="font-display text-paper text-[clamp(2.5rem,5vw,3.5rem)] leading-[1.05] font-semibold tracking-[-0.025em]">
-              Java hay Bedrock. <span className="text-gold-bright italic">Vào ngay đi.</span>
+            <h2 className="font-display text-paper text-display-lg font-semibold">
+              Java hay Bedrock.{' '}
+              <span className="font-editorial text-accent-bright text-[1.05em] italic">
+                Vào ngay đi.
+              </span>
             </h2>
           </div>
           <p className="text-body-md text-on-surface-muted max-w-md md:col-span-5 md:pb-2">
@@ -124,6 +127,25 @@ export default function JoinGuide() {
             nếu kẹt chỗ nào.
           </p>
         </header>
+
+        {/* Three-step rail */}
+        <ol className="mb-stack-md gap-gutter grid sm:grid-cols-3">
+          {[
+            { n: '01', t: 'Chọn phiên bản', d: 'Java cho PC, Bedrock cho điện thoại.' },
+            { n: '02', t: 'Copy địa chỉ IP', d: 'Bấm nút copy ở ô bên dưới.' },
+            { n: '03', t: 'Paste và vào chơi', d: 'Dán vào server list, nhấn Join.' },
+          ].map((s) => (
+            <li key={s.n} className="flex items-start gap-3">
+              <span className="font-display text-accent-bright/80 text-[26px] leading-none font-semibold tabular-nums">
+                {s.n}
+              </span>
+              <span className="min-w-0">
+                <span className="text-paper block text-[14px] font-medium">{s.t}</span>
+                <span className="text-on-surface-faded block text-[12.5px] leading-snug">{s.d}</span>
+              </span>
+            </li>
+          ))}
+        </ol>
 
         <Tabs value={tab} defaultValue="java" onChange={(v) => setTab(v as 'java' | 'bedrock')}>
           {/* Segmented track wrapping the triggers */}
