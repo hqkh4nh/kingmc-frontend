@@ -10,9 +10,6 @@ export default function Rules({ rules }: Props) {
     <section className="px-margin py-stack-2xl">
       <div className="mx-auto max-w-[var(--container-max)]">
         <header className="mb-stack-lg">
-          <p className="text-overline text-on-surface-faded mb-3">
-            <span className="text-gold-bright">04.</span> Luật
-          </p>
           <h2 className="font-display text-paper text-[clamp(2rem,4vw,2.75rem)] leading-[1.05] font-semibold tracking-[-0.02em]">
             Đọc trước khi tham gia.
           </h2>

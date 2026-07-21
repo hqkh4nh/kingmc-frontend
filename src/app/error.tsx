@@ -14,7 +14,11 @@ export default function ErrorBoundary({
   }, [error])
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center px-6 text-center">
+    <main className="px-margin relative isolate flex min-h-dvh flex-col items-center justify-center overflow-hidden text-center">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10 [background:radial-gradient(ellipse_at_50%_30%,rgba(200,163,86,0.1),transparent_60%)]"
+      />
       <p className="text-overline text-gold-bright">Lỗi</p>
       <h1 className="text-display-lg text-paper mt-stack-md">Có gì đó không ổn</h1>
       <p className="text-body-md text-on-surface-muted mt-stack-sm max-w-md">

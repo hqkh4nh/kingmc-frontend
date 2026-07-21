@@ -16,8 +16,7 @@ export default function ModeCTA() {
           Vô server đi.
         </h2>
         <p className="text-on-surface-muted mt-stack-sm text-body-md">
-          IP: <code className="text-paper font-mono">kingmc.vn</code>. Copy rồi vào Minecraft là
-          chơi.
+          IP: <code className="text-paper font-mono">{mainIp}</code>. Copy rồi vào Minecraft là chơi.
         </p>
         <div className="mt-stack-md flex flex-wrap items-center justify-center gap-3">
           <div className="rounded-pill bg-paper/[0.04] inline-flex items-center gap-3 py-2.5 pr-2 pl-4 shadow-[0_0_0_1px_rgba(245,239,226,0.1)_inset]">

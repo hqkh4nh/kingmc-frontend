@@ -7,7 +7,6 @@ import Features from '@/features/mode/Features'
 import ModeCTA from '@/features/mode/ModeCTA'
 import ModeHero from '@/features/mode/ModeHero'
 import Pets from '@/features/mode/Pets'
-import QuickInfo from '@/features/mode/QuickInfo'
 import QuickStart from '@/features/mode/QuickStart'
 import Rules from '@/features/mode/Rules'
 import { getModeById } from '@/data/modes'
@@ -69,7 +68,6 @@ export default async function ModeRoute({ params }: PageProps) {
         <SiteHeader />
         <main>
           <ModeHero mode={mode} />
-          <QuickInfo info={mode.quickInfo} />
           {mode.quickStart && <QuickStart data={mode.quickStart} />}
           {mode.features && mode.features.length > 0 && <Features features={mode.features} />}
           {mode.pets && <Pets data={mode.pets} />}

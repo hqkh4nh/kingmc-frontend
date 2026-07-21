@@ -24,7 +24,7 @@ export default function TopBar({ scrolled }: { scrolled: boolean }) {
       }`}
     >
       <div className="border-border-hairline bg-ink/70 border-b backdrop-blur-md">
-        <div className="mx-auto flex h-10 max-w-[var(--container-max)] items-center justify-between px-6">
+        <div className="px-margin mx-auto flex h-10 max-w-[var(--container-max)] items-center justify-between">
           <ul className="flex items-center gap-5">
             {topLinks.map((link) => {
               const isInternal = !link.external && link.href.startsWith('/')

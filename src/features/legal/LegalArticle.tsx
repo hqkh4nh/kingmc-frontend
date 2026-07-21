@@ -17,10 +17,7 @@ function Block({ block }: { block: LegalBlock }) {
       <ul className="gap-stack-xs mt-3 flex flex-col">
         {block.items.map((item, i) => (
           <li key={i} className="text-body-md text-on-surface-muted flex gap-3">
-            <span
-              aria-hidden="true"
-              className="text-gold-bright mt-[10px] h-1 w-1 shrink-0 rounded-full bg-current"
-            />
+            <span aria-hidden="true" className="bg-gold-bright/50 mt-[13px] h-px w-2.5 shrink-0" />
             <span>{item}</span>
           </li>
         ))}
@@ -32,7 +29,7 @@ function Block({ block }: { block: LegalBlock }) {
 
 export default function LegalArticle({ doc }: { doc: LegalDoc }) {
   return (
-    <article className="px-margin pb-stack-2xl pt-32">
+    <article className="px-margin pb-stack-2xl pt-stack-2xl">
       <div className="mx-auto max-w-[var(--container-narrow)]">
         <Link
           href="/"
@@ -55,10 +52,7 @@ export default function LegalArticle({ doc }: { doc: LegalDoc }) {
         </header>
 
         {/* Mục lục */}
-        <nav
-          aria-label="Mục lục"
-          className="border-border-soft bg-surface/40 mt-stack-md rounded-lg border p-5"
-        >
+        <nav aria-label="Mục lục" className="bg-surface/40 edge-lit mt-stack-md rounded-2xl p-5">
           <p className="text-overline text-on-surface-faded">MỤC LỤC</p>
           <ul className="mt-3 flex flex-col gap-1.5">
             {doc.sections.map((section) => (

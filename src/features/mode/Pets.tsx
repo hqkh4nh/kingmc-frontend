@@ -1,4 +1,7 @@
+'use client'
+
 import type { PetsInfo } from '@/data/modes/types'
+import { useScrollReveal } from '@/hooks/useScrollReveal'
 
 interface Props {
   data: PetsInfo
@@ -17,14 +20,17 @@ const TONE_NUMERAL: Record<PetsInfo['tiers'][number]['tone'], string> = {
 }
 
 export default function Pets({ data }: Props) {
+  const { ref, revealed } = useScrollReveal<HTMLDivElement>()
   return (
     <section className="px-margin py-stack-2xl">
-      <div className="mx-auto max-w-[var(--container-max)]">
+      <div
+        ref={ref}
+        className={`mx-auto max-w-[var(--container-max)] transition-all duration-700 ease-fluid motion-reduce:translate-y-0 motion-reduce:opacity-100 motion-reduce:transition-none ${
+          revealed ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+        }`}
+      >
         <div className="gap-gutter grid items-start md:grid-cols-12">
           <div className="md:col-span-7">
-            <p className="text-overline text-on-surface-faded mb-3">
-              <span className="text-lapis">FEATURE ·</span> HỆ ĐỆ TỬ
-            </p>
             <h2 className="font-display text-paper text-[clamp(2rem,4vw,2.75rem)] leading-[1.08] font-semibold tracking-[-0.02em]">
               Hệ Đệ Tử.
             </h2>

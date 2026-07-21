@@ -1,7 +1,35 @@
+'use client'
+
 import type { ModeContent } from '@/data/modes'
+import { useScrollReveal } from '@/hooks/useScrollReveal'
 
 interface Props {
   commands: NonNullable<ModeContent['commands']>
+}
+
+type Category = Props['commands'][number]
+
+function CategoryCard({ cat, index }: { cat: Category; index: number }) {
+  const { ref, revealed } = useScrollReveal<HTMLDivElement>()
+  return (
+    <div
+      ref={ref}
+      style={{ transitionDelay: `${index * 50}ms` }}
+      className={`bg-surface/40 edge-lit rounded-3xl p-6 transition-all duration-700 ease-fluid motion-reduce:translate-y-0 motion-reduce:opacity-100 motion-reduce:transition-none ${
+        revealed ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+      }`}
+    >
+      <p className="text-overline text-gold-bright/80 mb-4">{cat.category}</p>
+      <ul className="flex flex-col gap-3">
+        {cat.items.map((c) => (
+          <li key={c.cmd} className="flex flex-col gap-0.5">
+            <code className="text-paper font-mono text-[14px] font-semibold">{c.cmd}</code>
+            <p className="text-on-surface-muted text-[13px] leading-snug">{c.desc}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
 }
 
 export default function Commands({ commands }: Props) {
@@ -9,29 +37,14 @@ export default function Commands({ commands }: Props) {
     <section className="px-margin py-stack-2xl">
       <div className="mx-auto max-w-[var(--container-max)]">
         <header className="mb-stack-lg">
-          <p className="text-overline text-on-surface-faded mb-3">
-            <span className="text-gold-bright">03.</span> Lệnh thường dùng
-          </p>
+          <h2 className="font-display text-paper text-[clamp(2rem,4vw,2.75rem)] leading-[1.05] font-semibold tracking-[-0.02em]">
+            Lệnh trong game.
+          </h2>
         </header>
 
-        <div className="gap-gutter grid md:grid-cols-2 lg:grid-cols-3">
-          {commands.map((cat) => (
-            <div
-              key={cat.category}
-              className="bg-surface-2/60 rounded-2xl p-6 shadow-[0_0_0_1px_rgba(245,239,226,0.06)_inset]"
-            >
-              <p className="text-overline text-on-surface-faded mb-3">{cat.category}</p>
-              <ul className="flex flex-col gap-2.5">
-                {cat.items.map((c) => (
-                  <li key={c.cmd} className="flex flex-col gap-0.5">
-                    <code className="text-gold-bright font-mono text-[14px] font-semibold">
-                      {c.cmd}
-                    </code>
-                    <p className="text-on-surface-muted text-[13px]">{c.desc}</p>
-                  </li>
-                ))}
-              </ul>
-            </div>
+        <div className="gap-gutter grid sm:grid-cols-2">
+          {commands.map((cat, i) => (
+            <CategoryCard key={cat.category} cat={cat} index={i} />
           ))}
         </div>
       </div>
