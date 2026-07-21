@@ -25,9 +25,11 @@ export default function CommunityBand() {
           <ul className="mt-7 flex max-w-md flex-col gap-3.5">
             {PERKS.map((perk) => (
               <li key={perk} className="text-on-surface-muted flex items-start gap-3 text-[15px]">
-                <span
+                <Icon
+                  name="check"
+                  size={18}
+                  className="text-accent-bright mt-0.5 shrink-0"
                   aria-hidden="true"
-                  className="bg-accent/70 mt-2 h-1.5 w-1.5 shrink-0 rotate-45"
                 />
                 {perk}
               </li>

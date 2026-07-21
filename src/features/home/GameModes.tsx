@@ -7,14 +7,19 @@ import Icon from '@/components/server/Icon'
 import { siteConfig, type GameMode } from '@/config/site'
 import { useScrollReveal } from '@/hooks/useScrollReveal'
 
-// Per-mode accent drives the number, media wash and "Khám phá" link.
 const ACCENT: Record<GameMode['id'], string> = {
   kingsmp: 'var(--color-moss)',
   'mega-earth': 'var(--color-lapis)',
   'battle-royale': 'var(--color-rust)',
 }
 
-function Panel({ mode, index, total }: { mode: GameMode; index: number; total: number }) {
+const KICKER: Record<GameMode['id'], string> = {
+  kingsmp: 'Sinh tồn cộng đồng',
+  'mega-earth': 'Bản đồ Trái Đất',
+  'battle-royale': 'Đấu trường sinh tồn',
+}
+
+function Panel({ mode, index }: { mode: GameMode; index: number }) {
   const { ref, revealed } = useScrollReveal<HTMLDivElement>()
   const flipped = index % 2 === 1
   const accent = ACCENT[mode.id]
@@ -46,8 +51,8 @@ function Panel({ mode, index, total }: { mode: GameMode; index: number; total: n
 
       {/* Copy */}
       <div className={flipped ? 'lg:order-1 lg:pr-10' : 'lg:pl-10'}>
-        <span className="font-mono text-[13px] tracking-[0.3em] text-[color:var(--panel-accent)]">
-          {String(index + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
+        <span className="text-[12px] font-semibold tracking-[0.22em] text-[color:var(--panel-accent)] uppercase">
+          {KICKER[mode.id]}
         </span>
         <div className="mt-3 flex flex-wrap items-center gap-3">
           <h3 className="font-display text-paper text-[clamp(1.9rem,4vw,2.75rem)] leading-tight font-bold">
@@ -78,9 +83,7 @@ export default function GameModes() {
     <section id="game-modes" className="px-margin py-stack-2xl relative">
       <div className="mx-auto max-w-[var(--container-max)]">
         <header className="mb-stack-lg max-w-2xl">
-          <p className="text-overline text-on-surface-faded mb-3">
-            <span className="text-accent-bright">01.</span> Thế giới của bạn
-          </p>
+          <p className="text-overline text-on-surface-faded mb-3">Thế giới của bạn</p>
           <h2 className="font-display text-paper text-display-lg font-semibold">
             Ba{' '}
             <span className="font-editorial text-accent-bright text-[1.05em] italic">
@@ -91,7 +94,7 @@ export default function GameModes() {
 
         <div className="gap-stack-2xl flex flex-col">
           {modes.map((mode, i) => (
-            <Panel key={mode.id} mode={mode} index={i} total={modes.length} />
+            <Panel key={mode.id} mode={mode} index={i} />
           ))}
         </div>
       </div>

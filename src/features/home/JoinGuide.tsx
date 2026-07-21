@@ -112,9 +112,7 @@ export default function JoinGuide() {
         {/* Asymmetric header */}
         <header className="mb-stack-md gap-gutter grid items-end md:grid-cols-12">
           <div className="md:col-span-7">
-            <p className="text-overline text-on-surface-faded mb-3">
-              <span className="text-accent-bright">02.</span> Bắt đầu trong 30 giây
-            </p>
+            <p className="text-overline text-on-surface-faded mb-3">Bắt đầu trong 30 giây</p>
             <h2 className="font-display text-paper text-display-lg font-semibold">
               Java hay Bedrock.{' '}
               <span className="font-editorial text-accent-bright text-[1.05em] italic">
