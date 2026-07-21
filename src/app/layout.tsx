@@ -1,5 +1,10 @@
 import type { Metadata, Viewport } from 'next'
-import { Bricolage_Grotesque, JetBrains_Mono, Plus_Jakarta_Sans } from 'next/font/google'
+import {
+  Bricolage_Grotesque,
+  Fraunces,
+  JetBrains_Mono,
+  Plus_Jakarta_Sans,
+} from 'next/font/google'
 import GrainOverlay from '@/components/server/GrainOverlay'
 import ScrollProgress from '@/components/client/ScrollProgress'
 import WebVitals from '@/components/client/WebVitals'
@@ -25,14 +30,22 @@ const jetbrains = JetBrains_Mono({
   display: 'swap',
 })
 
+// High-contrast display serif — used ONLY for short editorial in-line accents.
+const fraunces = Fraunces({
+  subsets: ['latin', 'vietnamese'],
+  variable: '--font-fraunces',
+  display: 'swap',
+  style: ['normal', 'italic'],
+})
+
 export const metadata: Metadata = {
   metadataBase: new URL(env.NEXT_PUBLIC_SITE_URL),
   title: {
-    default: 'KingMC · Máy chủ Minecraft #1 Việt Nam',
+    default: 'KingMC · Máy chủ Minecraft #2 Việt Nam',
     template: '%s · KingMC',
   },
   description:
-    'KingMC · Máy chủ Minecraft #1 Việt Nam. KingSMP, Mega Earth, Battle Royale. IP: kingmc.vn',
+    'KingMC · Máy chủ Minecraft #2 Việt Nam. KingSMP, Mega Earth, Battle Royale. IP: kingmc.vn',
   openGraph: {
     type: 'website',
     locale: 'vi_VN',
@@ -56,7 +69,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="vi"
-      className={`${bricolage.variable} ${jakarta.variable} ${jetbrains.variable}`}
+      data-theme="editorial"
+      className={`${bricolage.variable} ${jakarta.variable} ${jetbrains.variable} ${fraunces.variable}`}
       suppressHydrationWarning
     >
       <body
