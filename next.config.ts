@@ -6,6 +6,14 @@ const withBundleAnalyzer = bundleAnalyzer({ enabled: process.env.ANALYZE === 'tr
 const nextConfig: NextConfig = {
   output: 'standalone',
   cacheComponents: true,
+  outputFileTracingIncludes: {
+    '/og': [
+      './assets/fonts/*.ttf',
+      './assets/og/*',
+      './public/og/bg.*',
+      './public/images/logo-with-text.png',
+    ],
+  },
   experimental: {
     instantNavigationDevToolsToggle: true,
   },
