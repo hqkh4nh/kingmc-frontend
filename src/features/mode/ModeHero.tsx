@@ -7,17 +7,9 @@ import { siteConfig } from '@/config/site'
 import type { ModeContent } from '@/data/modes'
 import ModeHeroArt from './ModeHeroArt'
 
-const MODE_ACCENT: Record<ModeContent['id'], string> = {
-  kingsmp: 'var(--color-moss)',
-  'mega-earth': 'var(--color-lapis)',
-  'battle-royale': 'var(--color-rust)',
-}
-
-const MODE_OVERLAY: Record<ModeContent['id'], string> = {
-  kingsmp: 'rgba(63, 90, 58, 0.5)',
-  'mega-earth': 'rgba(44, 70, 99, 0.5)',
-  'battle-royale': 'rgba(125, 69, 37, 0.5)',
-}
+// Single accent — gold — and a neutral photo scrim (modes differ by artwork, not colour).
+const ACCENT = 'var(--color-gold)'
+const OVERLAY = 'rgba(11, 14, 20, 0.5)'
 
 interface Props {
   mode: ModeContent
@@ -45,7 +37,7 @@ function buildFacts(info: ModeContent['quickInfo']): Fact[] {
 
 export default function ModeHero({ mode }: Props) {
   const { mainIp } = siteConfig.server
-  const accent = MODE_ACCENT[mode.id]
+  const accent = ACCENT
   const facts = buildFacts(mode.quickInfo)
 
   return (
@@ -55,7 +47,7 @@ export default function ModeHero({ mode }: Props) {
         aria-hidden="true"
         className="absolute inset-0 -z-20 scale-110 bg-cover bg-center blur-2xl"
         style={{
-          backgroundImage: `linear-gradient(180deg, ${MODE_OVERLAY[mode.id]} 0%, rgba(11,16,24,0.9) 55%, rgba(11,16,24,1) 100%), url(${mode.hero.backgroundImage})`,
+          backgroundImage: `linear-gradient(180deg, ${OVERLAY} 0%, rgba(11,14,20,0.9) 55%, rgba(11,14,20,1) 100%), url(${mode.hero.backgroundImage})`,
         }}
       />
       <div
@@ -71,7 +63,7 @@ export default function ModeHero({ mode }: Props) {
         <div className="lg:col-span-7">
           <Link
             href="/"
-            className="text-on-surface-faded hover:text-gold-bright text-overline inline-flex items-center gap-2 transition-colors"
+            className="text-on-surface-faded hover:text-gold-bright eyebrow inline-flex items-center gap-2 transition-colors"
           >
             <Icon name="arrow-left" size={11} weight="thin" />
             Trang chủ
@@ -83,7 +75,7 @@ export default function ModeHero({ mode }: Props) {
             </div>
           )}
 
-          <h1 className="font-display text-paper mt-stack-sm text-[clamp(2.5rem,6vw,4rem)] leading-[1.02] font-bold tracking-[-0.03em]">
+          <h1 className="font-display text-paper mt-stack-sm text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.02] font-bold tracking-[-0.03em]">
             {mode.name}
           </h1>
 
@@ -95,7 +87,7 @@ export default function ModeHero({ mode }: Props) {
           <dl className="mt-stack-md flex flex-wrap gap-x-8 gap-y-4">
             {facts.map((f) => (
               <div key={f.label}>
-                <dt className="text-overline text-on-surface-faded">{f.label}</dt>
+                <dt className="eyebrow text-on-surface-faded">{f.label}</dt>
                 <dd className="text-paper mt-1 inline-flex items-center gap-2 text-[15px] font-semibold">
                   {f.icon && <Icon name={f.icon} size={16} className="text-on-surface-muted" />}
                   {f.value}
@@ -105,7 +97,7 @@ export default function ModeHero({ mode }: Props) {
           </dl>
 
           <div className="mt-stack-lg flex flex-wrap items-center gap-3">
-            <div className="rounded-pill bg-paper/[0.04] edge-lit inline-flex items-center gap-3 py-2.5 pr-2 pl-4 backdrop-blur-md">
+            <div className="rounded-pill bg-paper/[0.04] shadow-hard-sm inline-flex items-center gap-3 py-2.5 pr-2 pl-4 backdrop-blur-md">
               <code className="text-paper font-mono text-[14px] tracking-tight">{mainIp}</code>
               <CopyButton text={mainIp} />
             </div>

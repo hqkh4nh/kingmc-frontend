@@ -18,8 +18,8 @@ export default function ModeHeroArt({ src, alt, accent }: Props) {
   const ref = useTilt<HTMLDivElement>({ max: 5, scale: 1.02 })
   return (
     <div className="[perspective:1200px]">
-      <div ref={ref} className="bg-surface/40 edge-lit rounded-[2rem] p-2 will-change-transform">
-        <div className="relative aspect-[16/10] overflow-hidden rounded-[1.6rem] lg:aspect-[7/8]">
+      <div ref={ref} className="bg-surface/40 shadow-hard rounded-lg p-2 will-change-transform">
+        <div className="relative aspect-[16/10] overflow-hidden rounded-md lg:aspect-[7/8]">
           <Image
             src={src}
             alt={alt}

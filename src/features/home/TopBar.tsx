@@ -1,9 +1,8 @@
-import Link from 'next/link'
 import Icon from '@/components/server/Icon'
 import type { IconName } from '@/config/site'
 import { siteConfig } from '@/config/site'
 
-const { topLinks, social } = siteConfig
+const { social } = siteConfig
 
 const socials: { href: string; icon: IconName; label: string }[] = [
   { href: social.facebookPage, icon: 'facebook', label: 'Facebook' },
@@ -13,8 +12,8 @@ const socials: { href: string; icon: IconName; label: string }[] = [
 ]
 
 /**
- * Thanh tiện ích slim phía trên navbar. Chỉ hiển thị ≥ md; khi cuộn xuống thu về
- * chiều cao 0 để pill navbar trượt lên (điều khiển qua prop `scrolled` từ SiteHeader).
+ * Thanh tiện ích slim phía trên navbar, chỉ chứa 4 link social. Hiển thị ≥ md; khi
+ * cuộn xuống thu về chiều cao 0 để pill navbar trượt lên (prop `scrolled` từ SiteHeader).
  */
 export default function TopBar({ scrolled }: { scrolled: boolean }) {
   return (
@@ -24,33 +23,7 @@ export default function TopBar({ scrolled }: { scrolled: boolean }) {
       }`}
     >
       <div className="border-border-hairline bg-ink/70 border-b backdrop-blur-md">
-        <div className="px-margin mx-auto flex h-10 max-w-[var(--container-max)] items-center justify-between">
-          <ul className="flex items-center gap-5">
-            {topLinks.map((link) => {
-              const isInternal = !link.external && link.href.startsWith('/')
-              const className =
-                'text-on-surface-faded hover:text-paper text-[12.5px] font-medium tracking-tight transition-colors duration-200'
-              return (
-                <li key={link.label}>
-                  {isInternal ? (
-                    <Link href={link.href} className={className}>
-                      {link.label}
-                    </Link>
-                  ) : (
-                    <a
-                      href={link.href}
-                      target={link.external ? '_blank' : undefined}
-                      rel={link.external ? 'noopener noreferrer' : undefined}
-                      className={className}
-                    >
-                      {link.label}
-                    </a>
-                  )}
-                </li>
-              )
-            })}
-          </ul>
-
+        <div className="px-margin mx-auto flex h-10 max-w-[var(--container-max)] items-center justify-end">
           <div className="flex items-center gap-1">
             {socials.map((s) => (
               <a

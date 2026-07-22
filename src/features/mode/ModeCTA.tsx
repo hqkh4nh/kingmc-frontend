@@ -12,7 +12,7 @@ export default function ModeCTA() {
   return (
     <section className="px-margin pt-stack-2xl pb-stack-2xl">
       <div className="mx-auto max-w-[var(--container-narrow)] text-center">
-        <h2 className="font-display text-paper text-[clamp(2rem,4vw,2.75rem)] leading-[1.05] font-semibold tracking-[-0.02em]">
+        <h2 className="font-display text-paper text-[clamp(2rem,4vw,3rem)] leading-[1.05] font-semibold tracking-[-0.02em]">
           Vô server đi.
         </h2>
         <p className="text-on-surface-muted mt-stack-sm text-body-md">
@@ -20,7 +20,7 @@ export default function ModeCTA() {
           chơi.
         </p>
         <div className="mt-stack-md flex flex-wrap items-center justify-center gap-3">
-          <div className="rounded-pill bg-paper/[0.04] inline-flex items-center gap-3 py-2.5 pr-2 pl-4 shadow-[0_0_0_1px_rgba(245,239,226,0.1)_inset]">
+          <div className="rounded-pill bg-paper/[0.04] shadow-hard-sm inline-flex items-center gap-3 py-2.5 pr-2 pl-4">
             <code className="text-paper font-mono text-[14px]">{mainIp}</code>
             <CopyButton text={mainIp} />
           </div>

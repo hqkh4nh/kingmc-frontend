@@ -92,9 +92,6 @@ export default function Navbar({ scrolled }: { scrolled: boolean }) {
         </ul>
 
         <div className="flex items-center gap-2">
-          <IconButton aria-label="Discord" href={social.discord} className="hidden lg:inline-flex">
-            <Icon name="discord" size={20} />
-          </IconButton>
           <Button variant="primary" size="md" onClick={playNow} className="hidden lg:inline-flex">
             Vào server
           </Button>

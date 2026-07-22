@@ -1,6 +1,22 @@
+import { cacheLife } from 'next/cache'
 import Icon from '@/components/server/Icon'
 import SocialIconLink from '@/components/server/SocialIconLink'
+import { fetchKingmcStats } from '@/lib/api/kingmc'
 import { siteConfig } from '@/config/site'
+
+const memberFmt = new Intl.NumberFormat('vi-VN')
+
+/** Real Discord member count, cached ~5min. Mirrors PlayerCountServer's pattern. */
+async function getDiscordMemberCount(): Promise<number | null> {
+  'use cache'
+  cacheLife({ revalidate: 300, expire: 3600 })
+  try {
+    const stats = await fetchKingmcStats()
+    return stats.discord_member_count ?? null
+  } catch {
+    return null
+  }
+}
 
 const PERKS = [
   'Sự kiện, giveaway và bản cập nhật thông báo sớm',
@@ -8,19 +24,18 @@ const PERKS = [
   'Báo lỗi và góp ý, được hỗ trợ trực tiếp',
 ]
 
-export default function CommunityBand() {
+export default async function CommunityBand() {
   const { social } = siteConfig
   const discordHandle = social.discord.replace(/^https?:\/\//, '')
+  const memberCount = await getDiscordMemberCount()
 
   return (
     <section id="community" className="px-margin py-stack-xl relative">
       <div className="gap-gutter mx-auto grid max-w-[var(--container-max)] items-center lg:grid-cols-12">
         {/* Left: what the community actually is */}
         <div className="lg:col-span-6">
-          <p className="text-overline text-on-surface-faded mb-3">Cộng đồng</p>
           <h2 className="font-display text-paper text-display-lg font-semibold">
-            <span className="font-editorial text-accent-bright text-[1.05em] italic">Tất cả</span> ở
-            Discord.
+            Cộng đồng ở <span className="text-gold-bright">Discord</span>
           </h2>
           <ul className="mt-7 flex max-w-md flex-col gap-3.5">
             {PERKS.map((perk) => (
@@ -39,8 +54,8 @@ export default function CommunityBand() {
 
         {/* Right: Discord panel (double-bezel) + other channels */}
         <div className="lg:col-span-6 lg:pl-8">
-          <div className="bg-surface/40 edge-lit rounded-[2rem] p-2">
-            <div className="bg-surface-2 relative overflow-hidden rounded-[1.6rem] p-8">
+          <div className="bg-surface/40 edge-lit rounded-lg p-2">
+            <div className="bg-surface-2 relative overflow-hidden rounded-md p-8">
               {/* Discord's own blurple — brand colour for the brand element reads as
                   intentional, not accent-slapped-everywhere. */}
               <div
@@ -57,6 +72,14 @@ export default function CommunityBand() {
                     <code className="text-on-surface-faded font-mono text-[13px] tracking-tight">
                       {discordHandle}
                     </code>
+                    {memberCount !== null && (
+                      <p className="text-on-surface-muted mt-1 font-mono text-[12px] tracking-tight">
+                        <span className="text-paper font-semibold">
+                          {memberFmt.format(memberCount)}
+                        </span>{' '}
+                        thành viên
+                      </p>
+                    )}
                   </div>
                 </div>
 
@@ -64,10 +87,11 @@ export default function CommunityBand() {
                   href={social.discord}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group rounded-pill focus-visible:ring-offset-surface-2 inline-flex h-12 items-center justify-center gap-2.5 bg-[#5865f2] text-[15px] font-semibold text-white shadow-[0_10px_24px_-8px_rgba(88,101,242,0.6)] transition-transform duration-200 ease-out hover:-translate-y-px hover:brightness-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#5865f2]/70 focus-visible:ring-offset-2 active:scale-[0.98]"
+                  className="group rounded-pill bg-surface-2 border-border-soft text-paper hover:bg-surface-3 focus-visible:ring-gold-bright/60 focus-visible:ring-offset-surface-2 inline-flex h-12 items-center justify-center gap-2.5 border text-[15px] font-semibold transition-colors duration-200 ease-out focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 active:scale-[0.98]"
                 >
+                  <Icon name="discord" size={18} className="text-[#5865f2]" />
                   Vào Discord
-                  <span className="ease-fluid flex h-7 w-7 items-center justify-center rounded-full bg-white/15 transition-transform duration-500 group-hover:translate-x-0.5">
+                  <span className="ease-fluid bg-paper/10 flex h-7 w-7 items-center justify-center rounded-full transition-transform duration-500 group-hover:translate-x-0.5">
                     <Icon name="arrow-right" size={15} />
                   </span>
                 </a>

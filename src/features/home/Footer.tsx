@@ -50,13 +50,11 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Oversized wordmark watermark */}
-      <span
+      {/* Pixel-block texture strip — nods to the block theme without a saturated wordmark */}
+      <div
         aria-hidden="true"
-        className="font-display text-paper/[0.03] pointer-events-none absolute -bottom-6 left-1/2 -z-10 -translate-x-1/2 text-[22vw] leading-none font-bold tracking-tighter select-none"
-      >
-        {brand.nameUpper}
-      </span>
+        className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-2 [background:repeating-linear-gradient(90deg,var(--color-border-strong)_0_8px,transparent_8px_16px)]"
+      />
     </footer>
   )
 }
@@ -70,7 +68,7 @@ function FooterCol({
 }) {
   return (
     <nav aria-label={title} className="flex flex-col gap-3">
-      <p className="text-overline text-on-surface-faded">{title}</p>
+      <p className="eyebrow text-on-surface-faded">{title}</p>
       <ul className="flex flex-col gap-2.5">
         {links.map((link) => (
           <li key={`${link.label}-${link.href}`}>

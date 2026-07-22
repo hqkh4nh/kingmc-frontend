@@ -1,12 +1,15 @@
 'use client'
 
 import type { ToastContent } from '@/components/client/ToastContext'
-import Icon from '@/components/server/Icon'
 
 interface Props {
   toast: ToastContent | null
 }
 
+/**
+ * Minecraft-chat styled toast: translucent black box, monospace, square corners,
+ * hard blocky shadow. Success is white text, errors tint red like a §c chat line.
+ */
 export default function Toast({ toast }: Props) {
   return (
     <div
@@ -17,12 +20,11 @@ export default function Toast({ toast }: Props) {
       {toast && (
         <div
           key={toast.message}
-          className="rounded-pill bg-surface-3 text-paper animate-toast-rise pointer-events-auto inline-flex max-w-md items-center gap-2.5 px-5 py-3 text-[14px] font-medium shadow-[0_0_0_1px_rgba(245,239,226,0.08)_inset,0_16px_48px_-12px_rgba(0,0,0,0.6)]"
+          className="animate-toast-rise shadow-hard-sm pointer-events-auto inline-flex max-w-md items-center rounded-none bg-black/60 px-4 py-2.5 font-mono text-[13px] backdrop-blur-sm"
         >
-          {toast.variant !== 'error' && (
-            <Icon name="check" size={16} className="text-gold-bright" />
-          )}
-          <span>{toast.message}</span>
+          <span className={toast.variant === 'error' ? 'text-[#ff6b6b]' : 'text-white'}>
+            {toast.message}
+          </span>
         </div>
       )}
     </div>

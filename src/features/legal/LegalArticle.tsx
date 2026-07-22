@@ -53,7 +53,7 @@ export default function LegalArticle({ doc }: { doc: LegalDoc }) {
 
         {/* Mục lục */}
         <nav aria-label="Mục lục" className="bg-surface/40 edge-lit mt-stack-md rounded-2xl p-5">
-          <p className="text-overline text-on-surface-faded">MỤC LỤC</p>
+          <p className="eyebrow text-on-surface-faded">MỤC LỤC</p>
           <ul className="mt-3 flex flex-col gap-1.5">
             {doc.sections.map((section) => (
               <li key={section.id}>

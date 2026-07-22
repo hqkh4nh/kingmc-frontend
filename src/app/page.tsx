@@ -9,7 +9,8 @@ import SiteHeader from '@/features/home/SiteHeader'
 export const unstable_instant = { prefetch: 'static' }
 
 export const metadata: Metadata = {
-  title: 'Máy chủ Minecraft #2 Việt Nam',
+  // No title override — inherit layout's KingMC-first default so the brand name
+  // leads the tab/search result. "#2 Việt Nam" stays as the tongue-in-cheek line.
   alternates: { canonical: '/' },
 }
 

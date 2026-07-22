@@ -3,29 +3,32 @@
 @theme {
   /* === Surfaces === */
   /* deep cave blue-black, NOT pure black; warm cream paper, NOT pure white */
-  --color-ink: #0b1018;
-  --color-ink-deep: #070a10;
-  --color-paper: #f5efe2;
-  --color-paper-dim: #d8d2c5;
+  --color-ink: #0b0e14;
+  --color-ink-deep: #070910;
+  --color-paper: #edf0f5;
+  --color-paper-dim: #c7ccd6;
 
-  --color-surface: #11171f;
-  --color-surface-2: #161d27;
-  --color-surface-3: #1b2330;
-  --color-surface-raised: #232a38;
+  --color-surface: #131824;
+  --color-surface-2: #1a2130;
+  --color-surface-3: #212b3d;
+  --color-surface-raised: #2a3548;
 
   --color-border-hairline: rgba(245, 239, 226, 0.06);
   --color-border-soft: rgba(245, 239, 226, 0.1);
   --color-border-strong: rgba(245, 239, 226, 0.16);
 
-  --color-on-surface: #f5efe2;
-  --color-on-surface-muted: #a4a8b2;
-  --color-on-surface-faded: #6c7280;
+  --color-on-surface: #edf0f5;
+  --color-on-surface-muted: #8a93a6;
+  --color-on-surface-faded: #5a6274;
 
-  /* === Accent: aged brass (NOT screaming yellow) === */
-  --color-gold: #c8a356;
-  --color-gold-bright: #dcb874;
-  --color-gold-deep: #95762f;
-  --color-gold-ink: #2a1f08;
+  /* === Accent: the ONE accent — gold. gold-deep doubles as "gold-dim". === */
+  --color-gold: #e9b949;
+  --color-gold-bright: #f2cd6b;
+  --color-gold-deep: #a8842f;
+  --color-gold-ink: #241c06;
+
+  /* Live/online status — the ONLY green on the site (server-online dot) */
+  --color-live: #4ade80;
 
   /* === Earthy gaming palette === */
   --color-moss: #6a9461; /* Minecraft grass-block green, muted */
@@ -46,11 +49,9 @@
   --color-error-container: var(--color-rust-deep);
 
   /* === Typography === */
-  --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
-  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-be-vietnam), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-jetbrains), ui-monospace, SFMono-Regular, monospace;
-  /* High-contrast display serif — editorial in-line accents ONLY, never body/display */
-  --font-editorial: var(--font-fraunces), ui-serif, Georgia, 'Times New Roman', serif;
 
   /* Editorial type scale — fluid clamp() so hero scales with viewport, display is dramatic, body relaxed */
   --text-display-3xl: clamp(4rem, 9vw + 0.5rem, 8.25rem);
@@ -68,10 +69,10 @@
   --text-display-xl--font-weight: 700;
   --text-display-xl--letter-spacing: -0.035em;
 
-  --text-display-lg: clamp(2.25rem, 3vw + 1rem, 2.75rem);
-  --text-display-lg--line-height: 1.08;
-  --text-display-lg--font-weight: 600;
-  --text-display-lg--letter-spacing: -0.025em;
+  --text-display-lg: clamp(2rem, 4vw, 3rem);
+  --text-display-lg--line-height: 1.05;
+  --text-display-lg--font-weight: 700;
+  --text-display-lg--letter-spacing: -0.01em;
 
   --text-heading-lg: 32px;
   --text-heading-lg--line-height: 1.18;
@@ -100,16 +101,15 @@
   --text-overline--font-weight: 600;
   --text-overline--letter-spacing: 0.18em;
 
-  /* === Radius (softer than chunky) === */
-  --radius-sm: 6px;
-  --radius-DEFAULT: 12px;
-  --radius-md: 14px;
-  --radius-lg: 20px;
-  --radius-xl: 28px;
-  --radius-2xl: 36px;
-  --radius-pill: 999px;
+  --radius-sm: 2px;
+  --radius-DEFAULT: 4px;
+  --radius-md: 4px;
+  --radius-lg: 4px;
+  --radius-xl: 4px;
+  --radius-2xl: 4px;
+  --radius-3xl: 4px;
+  --radius-pill: 4px;
 
-  /* === Spacing — generous editorial whitespace === */
   --spacing-gutter: 32px;
   --spacing-margin: 40px;
   --spacing-stack-xs: 8px;
@@ -146,7 +146,7 @@
   --color-accent: var(--color-gold);
   --color-accent-bright: var(--color-gold-bright);
   --color-accent-deep: var(--color-gold-deep);
-  --glow-accent: 200, 163, 86; /* rgb triplet for rgba() glows */
+  --glow-accent: 233, 185, 73; /* rgb triplet for rgba() glows (new gold) */
 
   /* === Colored shadows (per-mode accents) === */
   --shadow-card-moss:
@@ -168,12 +168,6 @@
   --color-mode-battle-royale-deep: var(--color-rust-deep);
 }
 
-/* Editorial serif accent — apply to short in-line phrases only */
-@utility font-editorial {
-  font-family: var(--font-editorial);
-  font-optical-sizing: auto;
-}
-
 /* Edge-lit hairline: bright top rim + soft body, reads like machined metal */
 @utility edge-lit {
   box-shadow:
@@ -181,6 +175,27 @@
     inset 0 0 0 1px rgba(245, 239, 226, 0.06),
     0 1px 2px rgba(0, 0, 0, 0.4),
     0 12px 32px -12px rgba(0, 0, 0, 0.55);
+}
+
+@utility shadow-hard {
+  box-shadow:
+    inset 0 0 0 1px rgba(245, 239, 226, 0.08),
+    4px 4px 0 rgba(0, 0, 0, 0.45);
+}
+@utility shadow-hard-sm {
+  box-shadow:
+    inset 0 0 0 1px rgba(245, 239, 226, 0.08),
+    2px 2px 0 rgba(0, 0, 0, 0.45);
+}
+
+/* Eyebrow / small label - JetBrains Mono, uppercase, wide-tracked */
+@utility eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 /* Accent glow driven by the theme's --glow-accent triplet */
@@ -232,22 +247,25 @@
     @apply bg-ink text-on-surface antialiased;
     font-family: var(--font-sans);
     font-weight: 400;
-    font-feature-settings: 'ss01', 'cv11';
+    font-size: 1.0625rem; /* 17px base body */
     letter-spacing: -0.005em;
   }
 
-  /* Display headlines pick up Bricolage automatically */
+  /* Display headlines: Archivo Expanded, heavy, uppercase signage */
   h1,
   h2,
   h3,
   h4 {
     font-family: var(--font-display);
-    font-weight: 600;
+    font-weight: 800;
+    font-stretch: 125%;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
   }
 
   ::selection {
-    background: rgba(200, 163, 86, 0.35);
-    color: var(--color-paper);
+    background: rgba(233, 185, 73, 0.35);
+    color: var(--color-ink);
   }
 
   /* Custom scrollbar — gold-tinted, thin, paper-on-ink */
@@ -296,6 +314,37 @@
 
 @utility animate-rise-spring {
   animation: rise-spring 0.65s var(--ease-spring-soft) backwards;
+}
+
+/* Live status dot — a real slow blink, not a ping ring */
+@keyframes live-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+@utility animate-live-blink {
+  animation: live-blink 2s ease-in-out infinite;
+}
+
+/* Player-count digits flash gold when a live refetch changes them */
+@keyframes digit-flash {
+  from {
+    color: var(--color-gold-bright);
+    text-shadow: 0 0 8px rgba(233, 185, 73, 0.4);
+  }
+  to {
+    color: inherit;
+    text-shadow: none;
+  }
+}
+
+@utility animate-digit-flash {
+  animation: digit-flash 400ms ease-out;
 }
 
 @utility squircle-card {
@@ -353,6 +402,8 @@
   .animate-fade,
   .animate-drift,
   .animate-rise-spring,
+  .animate-live-blink,
+  .animate-digit-flash,
   .animate-toast-rise,
   .animate-tag-pulse,
   .animate-pulse,

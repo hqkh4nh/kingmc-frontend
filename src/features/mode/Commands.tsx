@@ -15,11 +15,11 @@ function CategoryCard({ cat, index }: { cat: Category; index: number }) {
     <div
       ref={ref}
       style={{ transitionDelay: `${index * 50}ms` }}
-      className={`bg-surface/40 edge-lit ease-fluid rounded-3xl p-6 transition-all duration-700 motion-reduce:translate-y-0 motion-reduce:opacity-100 motion-reduce:transition-none ${
+      className={`bg-surface/40 shadow-hard ease-fluid rounded-3xl p-6 transition-all duration-700 motion-reduce:translate-y-0 motion-reduce:opacity-100 motion-reduce:transition-none ${
         revealed ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
       }`}
     >
-      <p className="text-overline text-gold-bright/80 mb-4">{cat.category}</p>
+      <p className="eyebrow text-gold-deep mb-4">{cat.category}</p>
       <ul className="flex flex-col gap-3">
         {cat.items.map((c) => (
           <li key={c.cmd} className="flex flex-col gap-0.5">
@@ -37,7 +37,7 @@ export default function Commands({ commands }: Props) {
     <section className="px-margin py-stack-2xl">
       <div className="mx-auto max-w-[var(--container-max)]">
         <header className="mb-stack-lg">
-          <h2 className="font-display text-paper text-[clamp(2rem,4vw,2.75rem)] leading-[1.05] font-semibold tracking-[-0.02em]">
+          <h2 className="font-display text-paper text-[clamp(2rem,4vw,3rem)] leading-[1.05] font-semibold tracking-[-0.02em]">
             Lệnh trong game.
           </h2>
         </header>

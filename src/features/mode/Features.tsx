@@ -25,7 +25,7 @@ function FeatureTile({
     <article
       ref={ref}
       style={{ transitionDelay: `${index * 60}ms` }}
-      className={`bg-surface/40 edge-lit group ease-fluid motion-reduce:blur-0 relative overflow-hidden rounded-3xl transition-all duration-700 motion-reduce:translate-y-0 motion-reduce:opacity-100 motion-reduce:transition-none ${
+      className={`bg-surface/40 shadow-hard group ease-fluid motion-reduce:blur-0 relative overflow-hidden rounded-3xl transition-all duration-700 motion-reduce:translate-y-0 motion-reduce:opacity-100 motion-reduce:transition-none ${
         revealed ? 'blur-0 translate-y-0 opacity-100' : 'translate-y-8 opacity-0 blur-sm'
       } ${span2 ? 'sm:col-span-2' : ''} ${lead ? 'p-8' : 'p-6'}`}
     >
@@ -66,7 +66,7 @@ export default function Features({ features }: Props) {
     <section className="px-margin py-stack-2xl">
       <div className="mx-auto max-w-[var(--container-max)]">
         <header className="mb-stack-lg">
-          <h2 className="font-display text-paper text-[clamp(2rem,4vw,2.75rem)] leading-[1.05] font-semibold tracking-[-0.02em]">
+          <h2 className="font-display text-paper text-[clamp(2rem,4vw,3rem)] leading-[1.05] font-semibold tracking-[-0.02em]">
             Cái gì làm nên server.
           </h2>
         </header>

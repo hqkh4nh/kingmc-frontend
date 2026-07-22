@@ -8,14 +8,14 @@ interface Props {
 }
 
 const TONE_CLASSES: Record<PetsInfo['tiers'][number]['tone'], string> = {
-  moss: 'bg-moss-deep/15 ring-moss/35 text-moss',
-  lapis: 'bg-lapis-deep/15 ring-lapis/35 text-lapis',
-  gold: 'bg-gold-deep/15 ring-gold/40 text-gold-bright',
+  moss: 'bg-gold-deep/12 ring-gold-deep/30 text-gold-deep',
+  lapis: 'bg-gold/12 ring-gold/30 text-gold',
+  gold: 'bg-gold-bright/15 ring-gold-bright/40 text-gold-bright',
 }
 
 const TONE_NUMERAL: Record<PetsInfo['tiers'][number]['tone'], string> = {
-  moss: 'text-moss',
-  lapis: 'text-lapis',
+  moss: 'text-gold-deep',
+  lapis: 'text-gold',
   gold: 'text-gold-bright',
 }
 
@@ -31,7 +31,7 @@ export default function Pets({ data }: Props) {
       >
         <div className="gap-gutter grid items-start md:grid-cols-12">
           <div className="md:col-span-7">
-            <h2 className="font-display text-paper text-[clamp(2rem,4vw,2.75rem)] leading-[1.08] font-semibold tracking-[-0.02em]">
+            <h2 className="font-display text-paper text-[clamp(2rem,4vw,3rem)] leading-[1.08] font-semibold tracking-[-0.02em]">
               Hệ Đệ Tử.
             </h2>
             <p className="text-body-md text-on-surface-muted mt-stack-sm max-w-md">

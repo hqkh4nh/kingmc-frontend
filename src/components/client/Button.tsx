@@ -18,19 +18,22 @@ const base =
   'focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-bright/60 focus-visible:ring-offset-2 focus-visible:ring-offset-ink ' +
   'disabled:pointer-events-none disabled:opacity-40'
 
+// --drop scales the hard offset-shadow with the button size (spec 5.4): small
+// buttons (nav) get a 2px drop, the large hero CTA keeps the heavier 4px.
 const sizes: Record<Size, string> = {
-  sm: 'h-9 px-4 text-[13px]',
-  md: 'h-11 px-6 text-[15px]',
-  lg: 'h-14 px-9 text-[17px]',
+  sm: 'h-9 px-4 text-[13px] [--drop:2px]',
+  md: 'h-11 px-6 text-[15px] [--drop:2px]',
+  lg: 'h-14 px-9 text-[17px] [--drop:4px]',
 }
 
 const variants: Record<Variant, string> = {
-  // Brass-warm primary with inset highlight + soft glow halo
+  // Brass primary with a Minecraft-style bevel (light top, dark bottom) + hard offset drop.
+  // One physics for the whole site: hover lifts the block up, active presses it back down.
   primary:
     'bg-gold text-gold-ink hover:bg-gold-bright ' +
-    'shadow-[0_1px_0_rgba(255,255,255,0.25)_inset,0_-2px_0_rgba(0,0,0,0.15)_inset,0_8px_24px_-8px_rgba(200,163,86,0.5),0_4px_12px_-4px_rgba(0,0,0,0.4)] ' +
-    'hover:shadow-[0_1px_0_rgba(255,255,255,0.3)_inset,0_-2px_0_rgba(0,0,0,0.18)_inset,0_12px_28px_-6px_rgba(220,184,116,0.55),0_6px_16px_-2px_rgba(0,0,0,0.45)] ' +
-    'hover:-translate-y-px',
+    'shadow-[0_1px_0_rgba(255,255,255,0.25)_inset,0_-2px_0_rgba(0,0,0,0.15)_inset,var(--drop)_var(--drop)_0_rgba(0,0,0,0.4)] ' +
+    'hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[0_1px_0_rgba(255,255,255,0.3)_inset,0_-2px_0_rgba(0,0,0,0.18)_inset,6px_6px_0_rgba(0,0,0,0.45)] ' +
+    'active:translate-x-0 active:translate-y-0 active:shadow-[0_1px_0_rgba(255,255,255,0.2)_inset,2px_2px_0_rgba(0,0,0,0.4)]',
   secondary:
     'bg-surface-3 text-paper hover:bg-surface-raised ' +
     'shadow-[0_1px_0_rgba(255,255,255,0.04)_inset,0_4px_12px_-4px_rgba(0,0,0,0.45),0_0_0_1px_rgba(245,239,226,0.08)_inset]',
